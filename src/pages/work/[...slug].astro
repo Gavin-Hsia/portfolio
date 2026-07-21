@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import WorkLayout from '@/layouts/WorkLayout.astro';
+import type { WorkEntry } from '@/lib/content';
+import { workSlug } from '@/lib/content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work', (e) => import.meta.env.DEV || !e.data.draft);
+  return entries.map((entry) => ({
+    params: { slug: workSlug(entry) },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: WorkEntry;
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<WorkLayout entry={entry}>
+  <Content />
+</WorkLayout>

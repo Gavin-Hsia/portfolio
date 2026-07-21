@@ -1,0 +1,188 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TechTag from '@/components/TechTag.astro';
+import { getExperience, getWork, workSlug, workHref } from '@/lib/content';
+import type { WorkEntry } from '@/lib/content';
+
+const experience = await getExperience();
+const work = await getWork();
+const workById = new Map(work.map((w) => [workSlug(w), w]));
+
+// Resolve rendered content + related work up front (async work belongs here,
+// not inside the template).
+const entries = await Promise.all(
+  experience.map(async (exp) => {
+    const { Content } = await exp.render();
+    const related: WorkEntry[] = [];
+    for (const slug of exp.data.related) {
+      const w = workById.get(slug);
+      if (w) related.push(w);
+    }
+    return { exp, Content, related };
+  })
+);
+---
+
+<BaseLayout title="Experience" description="Internships and roles, with links to detailed write-ups.">
+  <section class="section">
+    <div class="container">
+      <p class="mono-label">experience</p>
+      <h1 class="page-title">Where I've worked</h1>
+      <p class="page-lede">
+        Roles and internships in reverse-chronological order. The deep detail lives in the linked
+        work write-ups.
+      </p>
+
+      <ol class="timeline">
+        {
+          entries.map(({ exp, Content, related }) => {
+            return (
+              <li class="entry">
+                <div class="entry-marker" aria-hidden="true" />
+                <div class="entry-body card">
+                  <div class="entry-head">
+                    <h2 class="entry-role">
+                      {exp.data.role} <span class="at">@</span> {exp.data.company}
+                    </h2>
+                    <span class="entry-dates">
+                      {exp.data.startDate} — {exp.data.endDate}
+                    </span>
+                  </div>
+                  {exp.data.location && <p class="entry-loc">{exp.data.location}</p>}
+                  <p class="entry-summary">{exp.data.summary}</p>
+
+                  {exp.data.tech.length > 0 && (
+                    <div class="entry-tech">
+                      {exp.data.tech.map((t) => (
+                        <TechTag label={t} />
+                      ))}
+                    </div>
+                  )}
+
+                  <div class="entry-notes prose">
+                    <Content />
+                  </div>
+
+                  {related.length > 0 && (
+                    <div class="related">
+                      <span class="related-label">Related work:</span>
+                      {related.map((w) => (
+                        <a class="related-link" href={workHref(w)}>
+                          {w.data.title} →
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0.4rem 0 0.5rem;
+  }
+  .page-lede {
+    color: var(--text-muted);
+    max-width: 42rem;
+    margin: 0 0 2.5rem;
+  }
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .entry {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .entry-marker {
+    position: absolute;
+    left: 0;
+    top: 1.4rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .entry-body {
+    padding: 1.25rem 1.35rem;
+  }
+  .entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .entry-role {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .at { color: var(--accent); }
+  .entry-dates {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+  .entry-loc {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 0.25rem 0 0;
+  }
+  .entry-summary {
+    color: var(--text);
+    margin: 0.75rem 0 0;
+  }
+  .entry-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.85rem;
+  }
+  .entry-notes {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .entry-notes :global(p:first-child) {
+    margin-top: 0.85rem;
+  }
+  .related {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.9rem;
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: var(--border-width) solid var(--border);
+  }
+  .related-label {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--text-faint);
+  }
+  .related-link {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+</style>

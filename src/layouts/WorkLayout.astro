@@ -1,0 +1,122 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TechTag from '@/components/TechTag.astro';
+import type { WorkEntry } from '@/lib/content';
+import { contextLabel, statusLabel, formatDate } from '@/lib/content';
+
+interface Props {
+  entry: WorkEntry;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+---
+
+<BaseLayout title={data.title} description={data.summary}>
+  <article class="container work">
+    <a href="/work" class="back mono-label">back to all work</a>
+
+    <header class="work-header">
+      <div class="meta">
+        <span class:list={['context', data.context]}>{contextLabel(data)}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span class="status">{statusLabel(data.status)}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span class="date">{formatDate(data.date)}</span>
+      </div>
+
+      <h1 class="title">{data.title}</h1>
+      <p class="summary">{data.summary}</p>
+
+      {
+        data.tech.length > 0 && (
+          <div class="tech">
+            {data.tech.map((t) => (
+              <TechTag label={t} />
+            ))}
+          </div>
+        )
+      }
+
+      {
+        (data.repo || data.demo) && (
+          <div class="links">
+            {data.repo && (
+              <a class="btn" href={data.repo} rel="noopener">
+                Source ↗
+              </a>
+            )}
+            {data.demo && (
+              <a class="btn btn-primary" href={data.demo} rel="noopener">
+                Live demo ↗
+              </a>
+            )}
+          </div>
+        )
+      }
+    </header>
+
+    {data.cover && <img class="cover" src={data.cover} alt={`${data.title} cover`} />}
+
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .work {
+    padding-block: 2.5rem 4rem;
+  }
+  .back {
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+  .back::before {
+    content: '← ';
+  }
+  .work-header {
+    margin-bottom: 2rem;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .context { color: var(--accent); }
+  .context.personal { color: var(--accent-2); }
+  .dot { color: var(--text-faint); }
+  .date { color: var(--text-faint); }
+
+  .title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: 0 0 0.75rem;
+  }
+  .summary {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 44rem;
+    margin: 0 0 1.25rem;
+  }
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .cover {
+    width: 100%;
+    border-radius: var(--radius);
+    border: var(--border-width) solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+</style>

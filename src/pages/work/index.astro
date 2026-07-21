@@ -1,0 +1,158 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import WorkCard from '@/components/WorkCard.astro';
+import { getWork, collectTech } from '@/lib/content';
+
+const work = await getWork();
+const allTech = collectTech(work);
+const hasInternship = work.some((w) => w.data.context === 'internship');
+const hasPersonal = work.some((w) => w.data.context === 'personal');
+
+const contexts = [
+  { value: 'all', label: 'All' },
+  ...(hasInternship ? [{ value: 'internship', label: 'Internship' }] : []),
+  ...(hasPersonal ? [{ value: 'personal', label: 'Personal' }] : []),
+];
+---
+
+<BaseLayout title="Work" description="In-depth write-ups of my internship and personal projects.">
+  <section class="section">
+    <div class="container">
+      <p class="mono-label">work</p>
+      <h1 class="page-title">Things I've built</h1>
+      <p class="page-lede">
+        In-depth write-ups of my work — mostly from internships, plus personal projects. Filter by
+        type or tech.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter work">
+        <div class="filter-row" data-filter-group="context">
+          {
+            contexts.map((c, i) => (
+              <button
+                class:list={['chip', { active: i === 0 }]}
+                data-context={c.value}
+                type="button"
+              >
+                {c.label}
+              </button>
+            ))
+          }
+        </div>
+        {
+          allTech.length > 0 && (
+            <div class="filter-row tech-row" data-filter-group="tech">
+              <button class="chip active" data-tech="all" type="button">
+                all tech
+              </button>
+              {allTech.map((t) => (
+                <button class="chip" data-tech={t} type="button">
+                  {t}
+                </button>
+              ))}
+            </div>
+          )
+        }
+      </div>
+
+      <div class="grid" id="work-grid">
+        {work.map((entry) => <WorkCard entry={entry} />)}
+      </div>
+      <p class="empty" id="empty-state" hidden>No work matches those filters.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0.4rem 0 0.5rem;
+  }
+  .page-lede {
+    color: var(--text-muted);
+    max-width: 42rem;
+    margin: 0 0 2rem;
+  }
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tech-row {
+    padding-top: 0.6rem;
+    border-top: var(--border-width) solid var(--border);
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    border: var(--border-width) solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .chip:hover {
+    color: var(--text-strong);
+    border-color: var(--accent);
+  }
+  .chip.active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .empty {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    padding: 2rem 0;
+  }
+</style>
+
+<script>
+  const grid = document.getElementById('work-grid');
+  const empty = document.getElementById('empty-state');
+  const cards = Array.from(grid?.querySelectorAll<HTMLElement>('.work-card') ?? []);
+  let activeContext = 'all';
+  let activeTech = 'all';
+
+  function apply() {
+    let visible = 0;
+    for (const card of cards) {
+      const ctx = card.dataset.context ?? '';
+      const tech = (card.dataset.tech ?? '').split(',');
+      const ctxOk = activeContext === 'all' || ctx === activeContext;
+      const techOk = activeTech === 'all' || tech.includes(activeTech);
+      const show = ctxOk && techOk;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    }
+    if (empty) empty.hidden = visible !== 0;
+  }
+
+  function wire(group: string, onPick: (value: string) => void, key: string) {
+    const row = document.querySelector(`[data-filter-group="${group}"]`);
+    row?.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('.chip');
+      if (!btn) return;
+      row.querySelectorAll('.chip').forEach((c) => c.classList.remove('active'));
+      btn.classList.add('active');
+      onPick(btn.dataset[key] ?? 'all');
+      apply();
+    });
+  }
+
+  wire('context', (v) => (activeContext = v), 'context');
+  wire('tech', (v) => (activeTech = v), 'tech');
+</script>

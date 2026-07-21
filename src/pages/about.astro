@@ -1,0 +1,124 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/config';
+---
+
+<BaseLayout title="About" description={site.tagline}>
+  <section class="section">
+    <div class="container about">
+      <p class="mono-label">about</p>
+      <h1 class="page-title">{site.name}</h1>
+      <p class="role">{site.role}</p>
+
+      <div class="prose bio">
+        {site.bio.map((p) => <p>{p}</p>)}
+      </div>
+
+      <div class="cols">
+        <div class="col">
+          <h2 class="col-title mono-label">skills</h2>
+          <dl class="skills">
+            {
+              site.skills.map((group) => (
+                <div class="skill-group">
+                  <dt>{group.group}</dt>
+                  <dd>
+                    {group.items.map((i) => (
+                      <span class="tag">{i}</span>
+                    ))}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <div class="col">
+          <h2 class="col-title mono-label">contact</h2>
+          <ul class="contact">
+            <li>
+              <span class="k">email</span>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </li>
+            {
+              site.socials.map((s) => (
+                <li>
+                  <span class="k">{s.label.toLowerCase()}</span>
+                  <a href={s.href} rel="me noopener">
+                    {s.href.replace(/^https?:\/\//, '').replace(/^mailto:/, '')}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <a class="btn btn-primary resume-btn" href={site.resumePath}>Download resume ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0.4rem 0 0.3rem;
+  }
+  .role {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+  .bio {
+    max-width: 44rem;
+    margin-bottom: 2.5rem;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    border-top: var(--border-width) solid var(--border);
+    padding-top: 2rem;
+  }
+  .col-title {
+    margin: 0 0 1rem;
+  }
+  .skills {
+    margin: 0;
+  }
+  .skill-group {
+    margin-bottom: 1rem;
+  }
+  .skill-group dt {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .skill-group dd {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .contact {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .contact li {
+    display: flex;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .contact .k {
+    color: var(--text-faint);
+    min-width: 4.5rem;
+  }
+  .resume-btn {
+    margin-top: 0.5rem;
+  }
+</style>
