@@ -78,7 +78,8 @@ export const site = {
     {
       school: 'Santa Clara University',
       credential: 'B.S. in Electrical and Computer Engineering',
-      detail: 'TODO(gavin): add GPA, honors, or relevant coursework if you’d like.',
+      detail:
+        'Relevant coursework: Real-Time Embedded Systems, Electronic Circuits, Computer Architecture, Logic Design, Advanced Programming, Microprocessor System Design, Electric Circuits, Abstract Data Types & Architecture, Theory of Algorithms, Physics Electromagnetism, Operating Systems, Communications & Networks, Electromagnetics, Digital Signal Processing, Electronics Prototyping.',
       dates: 'Expected June 2027',
     },
   ],
