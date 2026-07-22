@@ -35,7 +35,7 @@ src/
 public/
 ├── resume.pdf                # ← drop your real resume here (replace the placeholder note)
 └── images/
-    ├── circuit-bg.svg        # ← placeholder hero background; swap for a real photo if you like
+    ├── circuit-bg.jpg        # ← placeholder hero background; swap for a real photo if you like
     └── …                     # ← drop headshot (headshot.jpg), screenshots, project covers here
 ```
 
@@ -43,7 +43,7 @@ public/
 
 Bold condensed display type (Anton) + clean sans (Inter), with a dark cinematic hero and
 light content sections that reveal as you scroll. The hero/banner backgrounds use
-`public/images/circuit-bg.svg` — replace it with a real image to make it yours. Accent color
+`public/images/circuit-bg.jpg` — replace it with a real image to make it yours. Accent color
 and palette live as CSS variables at the top of `src/styles/global.css`.
 
 ## Adding a project
@@ -102,7 +102,7 @@ To deploy under a custom domain or subpath, set `site` (and `base`) in `astro.co
 - [ ] Edit `src/config.ts` (name, role, tagline, bio, email, socials, skills, education)
 - [ ] Replace `public/resume.pdf` with your real resume (delete `resume.pdf.README.txt`)
 - [ ] Add a headshot at `public/images/headshot.jpg` and wire it into the home intro section
-- [ ] (Optional) Replace `public/images/circuit-bg.svg` with a real hero photo
+- [ ] (Optional) Replace `public/images/circuit-bg.jpg` with a real hero photo
 - [ ] Replace the `example-*.md` files in `src/content/work/` with real projects
 - [ ] Replace `example-internship.md` in `src/content/experience/`
 - [ ] Add screenshots/covers to `public/images/`

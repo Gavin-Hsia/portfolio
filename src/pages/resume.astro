@@ -133,7 +133,9 @@ const workBySlug = new Map(
   .banner-bg {
     position: absolute;
     inset: 0;
-    background: url('/images/circuit-bg.svg') center / cover no-repeat;
+    background:
+      linear-gradient(rgba(8, 10, 15, 0.62), rgba(8, 10, 15, 0.82)) center / cover no-repeat,
+      url('/images/circuit-bg.jpg') center / cover no-repeat;
   }
   .banner-inner {
     position: relative;
