@@ -8,7 +8,7 @@ while this site holds the detailed write-ups.
 
 - **Astro** (static output) + Markdown content collections
 - Vanilla CSS design system (dark-default, light/dark toggle), no CSS framework
-- Self-hosted fonts via Fontsource (JetBrains Mono + Inter)
+- Self-hosted fonts via Fontsource (Anton + Inter)
 
 ## Develop
 
