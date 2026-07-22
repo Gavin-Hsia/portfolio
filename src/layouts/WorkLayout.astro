@@ -38,12 +38,12 @@ const { data } = entry;
         (data.repo || data.demo) && (
           <div class="work-links">
             {data.repo && (
-              <a class="btn" href={data.repo} rel="noopener">
+              <a class="btn" href={data.repo} target="_blank" rel="noopener noreferrer">
                 <span class="btn-label">Source ↗</span>
               </a>
             )}
             {data.demo && (
-              <a class="btn btn-primary" href={data.demo} rel="noopener">
+              <a class="btn btn-primary" href={data.demo} target="_blank" rel="noopener noreferrer">
                 <span class="btn-label">Live demo ↗</span>
               </a>
             )}

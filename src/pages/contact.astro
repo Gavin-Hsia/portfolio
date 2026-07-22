@@ -21,7 +21,12 @@ import { site } from '@/config';
       <div class="contact-list reveal" data-delay="3">
         {
           site.socials.map((s) => (
-            <a class="contact-row" href={s.href} rel="me noopener">
+            <a
+              class="contact-row"
+              href={s.href}
+              target={s.href.startsWith('http') ? '_blank' : undefined}
+              rel="me noopener noreferrer"
+            >
               <span class="k">{s.label}</span>
               <span class="v">{s.href.replace(/^https?:\/\//, '').replace(/^mailto:/, '')}</span>
             </a>
