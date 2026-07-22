@@ -1,0 +1,130 @@
+---
+import type { WorkEntry } from '@/lib/content';
+import { contextLabel, workHref } from '@/lib/content';
+
+interface Props {
+  entry: WorkEntry;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const href = workHref(entry);
+// Deterministic hue for placeholder tint, derived from the title.
+const hue = [...data.title].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
+---
+
+<a class="thumb reveal" href={href} data-context={data.context} data-tech={data.tech.join(',')}>
+  <div class="thumb-img">
+    {
+      data.cover ? (
+        <img src={data.cover} alt="" loading="lazy" />
+      ) : (
+        <div class="thumb-placeholder" style={`--h:${hue}`} aria-hidden="true">
+          <span class="thumb-glyph">{'{ }'}</span>
+        </div>
+      )
+    }
+    <span class="thumb-view">View project →</span>
+  </div>
+  <div class="thumb-caption">
+    <p class="thumb-context">{contextLabel(data)}</p>
+    <h3 class="thumb-title">{data.title}</h3>
+    <p class="thumb-summary">{data.summary}</p>
+  </div>
+</a>
+
+<style>
+  .thumb {
+    display: block;
+    color: var(--ink);
+  }
+  .thumb:hover { color: var(--ink); }
+  .thumb-img {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--night-2);
+  }
+  .thumb-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms var(--reveal-ease);
+  }
+  .thumb:hover .thumb-img img { transform: scale(1.04); }
+
+  .thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(120% 120% at 30% 20%, hsl(var(--h) 55% 22%), transparent 60%),
+      linear-gradient(135deg, #0e1420, #0a0d14);
+    position: relative;
+  }
+  .thumb-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(77, 163, 255, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77, 163, 255, 0.16) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(120% 120% at 50% 50%, #000 40%, transparent 75%);
+  }
+  .thumb-glyph {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: rgba(140, 196, 255, 0.85);
+    letter-spacing: 0.1em;
+  }
+
+  .thumb-view {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(11, 12, 16, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity var(--transition), transform var(--transition);
+  }
+  .thumb:hover .thumb-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  .thumb-caption {
+    padding-top: 0.95rem;
+  }
+  .thumb-context {
+    margin: 0 0 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+  .thumb-title {
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.05;
+    margin: 0 0 0.45rem;
+    color: var(--ink);
+  }
+  .thumb-summary {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+</style>

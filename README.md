@@ -21,18 +21,30 @@ npm run preview  # serve the built ./dist locally
 
 ## How it's organized
 
+Pages: **Home** (scrolling dark→light sections) · **Portfolio** (image grid of projects) ·
+**Resume** (experience + education + skills, with PDF download) · **Contact**.
+
 ```
 src/
-├── config.ts                 # ← edit your name, role, bio, socials, skills, resume path
+├── config.ts                 # ← edit name, role, bio, socials, skills, education, resume path
 ├── content/
 │   ├── config.ts             # frontmatter schemas (rarely need to touch)
 │   ├── work/                 # one Markdown file per project (internship OR personal)
-│   └── experience/           # one Markdown file per role → renders the timeline
+│   └── experience/           # one Markdown file per role → shown on the Resume page
 ├── components/ · layouts/ · pages/ · styles/
 public/
 ├── resume.pdf                # ← drop your real resume here (replace the placeholder note)
-└── images/                   # ← drop screenshots / GIFs / cover images here
+└── images/
+    ├── circuit-bg.svg        # ← placeholder hero background; swap for a real photo if you like
+    └── …                     # ← drop headshot (headshot.jpg), screenshots, project covers here
 ```
+
+### The look
+
+Bold condensed display type (Anton) + clean sans (Inter), with a dark cinematic hero and
+light content sections that reveal as you scroll. The hero/banner backgrounds use
+`public/images/circuit-bg.svg` — replace it with a real image to make it yours. Accent color
+and palette live as CSS variables at the top of `src/styles/global.css`.
 
 ## Adding a project
 
@@ -46,7 +58,7 @@ date: 2025-09-01
 context: 'internship'   # or 'personal'
 company: 'Company Name'  # shown when context is internship
 tech: ['TypeScript', 'React']
-featured: true           # show on the home page
+featured: true           # show in the "Featured Projects" row on the home page
 status: 'shipped'        # shipped | wip | archived
 repo: 'https://github.com/...'   # optional
 demo: 'https://...'              # optional live demo / video
@@ -57,8 +69,9 @@ cover: '/images/my-project/cover.png'  # optional hero image
 ...the in-depth write-up (Markdown) goes here...
 ```
 
-That's it — no code changes. The card, detail page, filtering, and sorting all pick it up
-automatically. See the `example-*.md` files for a full template, including where to add
+That's it — no code changes. The Portfolio thumbnail, detail page, filtering, and sorting all
+pick it up automatically. The `cover` image becomes the grid thumbnail; without one, a generated
+placeholder tile is used. See the `example-*.md` files for a full template, including where to add
 screenshots and demos.
 
 ### Adding images
@@ -69,10 +82,11 @@ screenshots and demos.
 Set `draft: true` in frontmatter to hide an entry from the production build (it still shows in
 `npm run dev`).
 
-## Adding a role to the timeline
+## Adding a role to the Resume page
 
 Create a file in `src/content/experience/` (see `example-internship.md`). Use the `related`
-field to link the role to the matching `work` write-ups by their filename slug.
+field to link the role to the matching `work` write-ups by their filename slug. Education and
+skills for the Resume page live in `src/config.ts`.
 
 ## Deploy (Vercel)
 
@@ -85,8 +99,10 @@ To deploy under a custom domain or subpath, set `site` (and `base`) in `astro.co
 
 ## First-time checklist
 
-- [ ] Edit `src/config.ts` (name, role, tagline, bio, email, socials, skills)
+- [ ] Edit `src/config.ts` (name, role, tagline, bio, email, socials, skills, education)
 - [ ] Replace `public/resume.pdf` with your real resume (delete `resume.pdf.README.txt`)
+- [ ] Add a headshot at `public/images/headshot.jpg` and wire it into the home intro section
+- [ ] (Optional) Replace `public/images/circuit-bg.svg` with a real hero photo
 - [ ] Replace the `example-*.md` files in `src/content/work/` with real projects
 - [ ] Replace `example-internship.md` in `src/content/experience/`
 - [ ] Add screenshots/covers to `public/images/`

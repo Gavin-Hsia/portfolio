@@ -1,94 +1,169 @@
 ---
 import { site, nav } from '@/config';
-import ThemeToggle from './ThemeToggle.astro';
+import SocialIcons from './SocialIcons.astro';
 
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
 ---
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="/" class="brand" aria-label="Home">
-      <span class="brand-mark" aria-hidden="true">&gt;_</span>
-      <span class="brand-name">{site.name}</span>
-    </a>
+<header class="site-header" id="site-header" data-state="top">
+  <div class="container-wide header-inner">
+    <a href="/" class="brand">{site.name} <span class="brand-role">— {site.role}</span></a>
 
-    <nav class="nav" aria-label="Primary">
-      {
-        nav.map((item) => (
-          <a href={item.href} class:list={['nav-link', { active: isActive(item.href) }]}>
-            {item.label}
-          </a>
-        ))
-      }
+    <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class:list={['nav-link', { active: isActive(item.href) }]}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <SocialIcons class="nav-socials" />
     </nav>
-
-    <div class="header-actions">
-      <ThemeToggle />
-    </div>
   </div>
 </header>
 
 <style>
   .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: var(--border-width) solid var(--border);
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    transition: background var(--transition), border-color var(--transition), backdrop-filter var(--transition);
+    border-bottom: 1px solid transparent;
+    color: #fff;
+  }
+  .site-header[data-state='scrolled'] {
+    background: rgba(9, 10, 14, 0.82);
+    backdrop-filter: blur(10px);
+    border-bottom-color: var(--night-line);
   }
   .header-inner {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    height: 3.75rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 4.5rem;
   }
   .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    color: var(--text-strong);
-    font-family: var(--font-mono);
-    font-weight: 600;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 1.05rem;
+    color: #fff;
+    white-space: nowrap;
   }
-  .brand:hover { color: var(--text-strong); }
-  .brand-mark {
-    color: var(--accent);
-    font-weight: 700;
+  .brand:hover { color: #fff; }
+  .brand-role {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.95rem;
   }
-  .brand-name { font-size: 0.95rem; }
 
   .nav {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    margin-left: auto;
+    gap: 1.75rem;
   }
-  .nav-link {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    padding: 0.4rem 0.7rem;
-    border-radius: var(--radius);
-    transition: color var(--transition), background var(--transition);
-  }
-  .nav-link:hover {
-    color: var(--text-strong);
-    background: var(--surface);
-  }
-  .nav-link.active {
-    color: var(--accent);
-  }
-
-  .header-actions {
+  .nav-list {
     display: flex;
     align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-link {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.98rem;
+    font-weight: 500;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+  }
+  .nav-link:hover { color: #fff; }
+  .nav-link.active {
+    color: #fff;
+    border-bottom-color: var(--accent);
+  }
+  .nav-socials { color: #fff; }
+
+  .menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .menu-btn span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    transition: transform var(--transition), opacity var(--transition);
   }
 
-  @media (max-width: 560px) {
-    .brand-name { display: none; }
-    .nav-link { padding: 0.4rem 0.5rem; }
+  @media (max-width: 820px) {
+    .brand-role { display: none; }
+    .menu-btn { display: flex; }
+    .nav {
+      position: fixed;
+      inset: 4.5rem 0 auto 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      background: rgba(9, 10, 14, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 1.75rem 1.5rem 2.25rem;
+      border-bottom: 1px solid var(--night-line);
+      transform: translateY(-120%);
+      transition: transform 260ms var(--reveal-ease);
+    }
+    .nav.open { transform: none; }
+    .nav-list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1rem;
+      width: 100%;
+    }
+    .nav-link { font-size: 1.15rem; }
+    .site-header[data-state='top'] {
+      background: rgba(9, 10, 14, 0.55);
+    }
   }
 </style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    if (!header) return;
+    header.dataset.state = window.scrollY > 40 ? 'scrolled' : 'top';
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const btn = document.getElementById('menu-btn');
+  const nav = document.getElementById('site-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+  nav?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      btn?.setAttribute('aria-expanded', 'false');
+    })
+  );
+</script>

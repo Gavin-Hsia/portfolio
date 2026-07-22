@@ -1,53 +1,53 @@
 ---
 import { site } from '@/config';
+import SocialIcons from './SocialIcons.astro';
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p class="footer-note">
-      <span class="prompt"></span>built with <a href="https://astro.build">Astro</a> · &copy; {year} {site.name}
-    </p>
-    <ul class="footer-socials">
-      {
-        site.socials.map((s) => (
-          <li>
-            <a href={s.href} rel="me noopener">
-              {s.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+  <div class="container-wide footer-inner">
+    <div class="footer-lead">
+      <p class="eyebrow">Let's build something</p>
+      <a href={`mailto:${site.email}`} class="footer-email display display-md">{site.email}</a>
+    </div>
+    <div class="footer-meta">
+      <SocialIcons class="footer-socials" />
+      <p class="footer-copy">&copy; {year} {site.name}</p>
+    </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    border-top: var(--border-width) solid var(--border);
-    margin-top: 4rem;
-    padding-block: 2rem;
+    background: var(--night);
+    color: var(--on-night);
+    padding-block: 3.5rem 2.5rem;
+    border-top: 1px solid var(--night-line);
   }
   .footer-inner {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
+    gap: 2rem;
+    align-items: flex-end;
     justify-content: space-between;
   }
-  .footer-note {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
+  .footer-email {
+    color: var(--on-night);
+    display: inline-block;
+    margin-top: 0.5rem;
+    word-break: break-word;
   }
-  .footer-socials {
+  .footer-email:hover { color: var(--accent); }
+  .footer-meta {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
-    list-style: none;
+  }
+  .footer-socials { color: var(--on-night); }
+  .footer-copy {
     margin: 0;
-    padding: 0;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
+    color: var(--on-night-muted);
+    font-size: 0.85rem;
   }
 </style>

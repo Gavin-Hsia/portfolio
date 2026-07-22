@@ -1,0 +1,109 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SocialIcons from '@/components/SocialIcons.astro';
+import { site } from '@/config';
+---
+
+<BaseLayout title="Contact" description={`Get in touch with ${site.name}.`}>
+  <section class="contact section--dark">
+    <div class="contact-bg" aria-hidden="true"></div>
+    <div class="container contact-inner">
+      <p class="eyebrow reveal">Get in touch</p>
+      <h1 class="display display-xl reveal" data-delay="1">Let's Talk</h1>
+      <p class="contact-lede reveal" data-delay="2">{site.bio[1] ?? site.tagline}</p>
+
+      <a class="email-cta reveal" data-delay="2" href={`mailto:${site.email}`}>{site.email}</a>
+
+      <div class="contact-links reveal" data-delay="3">
+        <SocialIcons class="contact-socials" />
+      </div>
+
+      <div class="contact-list reveal" data-delay="3">
+        {
+          site.socials.map((s) => (
+            <a class="contact-row" href={s.href} rel="me noopener">
+              <span class="k">{s.label}</span>
+              <span class="v">{s.href.replace(/^https?:\/\//, '').replace(/^mailto:/, '')}</span>
+            </a>
+          ))
+        }
+      </div>
+
+      {/* TODO: If you want a contact form, wire one up here (e.g. Formspree,
+          Netlify Forms, or a mailto). Kept link-based for now — no backend needed. */}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    background: var(--night);
+    color: var(--on-night);
+    overflow: hidden;
+  }
+  .contact-bg {
+    position: absolute;
+    inset: 0;
+    background: url('/images/circuit-bg.svg') center / cover no-repeat;
+    opacity: 0.9;
+  }
+  .contact-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    text-align: center;
+  }
+  .contact h1 { color: #fff; margin: 0.75rem 0 0; }
+  .contact-lede {
+    max-width: 40rem;
+    margin: 1.5rem auto 2.25rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+  .email-cta {
+    display: inline-block;
+    font-family: var(--font-display);
+    text-transform: none;
+    font-size: clamp(1.3rem, 4vw, 2.4rem);
+    color: #fff;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+    word-break: break-word;
+  }
+  .email-cta:hover { color: var(--accent); }
+
+  .contact-links {
+    margin: 2.25rem 0 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .contact-socials { color: #fff; }
+  .contact-socials :global(a) { opacity: 0.9; }
+
+  .contact-list {
+    max-width: 30rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--night-line);
+  }
+  .contact-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 0.25rem;
+    border-bottom: 1px solid var(--night-line);
+    color: var(--on-night);
+    text-align: left;
+  }
+  .contact-row:hover { color: var(--accent); }
+  .contact-row .k { font-weight: 600; }
+  .contact-row .v { color: var(--on-night-muted); }
+  .contact-row:hover .v { color: var(--accent); }
+</style>

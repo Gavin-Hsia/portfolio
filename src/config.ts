@@ -37,17 +37,28 @@ export const site = {
     { label: 'Email', href: 'mailto:gavin.h.hsia@gmail.com' },
   ] as SocialLink[],
 
-  /** Skills grouped for the About page. TODO: adjust to your stack. */
+  /** Skills grouped for the Resume/About pages. TODO: adjust to your stack. */
   skills: [
     { group: 'Languages', items: ['TODO', 'TODO', 'TODO'] },
     { group: 'Frameworks', items: ['TODO', 'TODO'] },
     { group: 'Tools & Infra', items: ['TODO', 'TODO'] },
   ],
+
+  /** Education for the Resume page. TODO: replace with your real education. */
+  education: [
+    {
+      school: 'TODO: University Name',
+      credential: 'B.S. in Computer Engineering', // TODO
+      detail: 'TODO: GPA, honors, relevant coursework, or activities',
+      dates: 'Expected 2027', // TODO
+    },
+  ],
 } as const;
 
 /** Primary nav links. */
 export const nav = [
-  { label: 'Work', href: '/work' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'About', href: '/about' },
+  { label: 'Home', href: '/' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Resume', href: '/resume' },
+  { label: 'Contact', href: '/contact' },
 ] as const;

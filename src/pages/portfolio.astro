@@ -1,0 +1,190 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectThumb from '@/components/ProjectThumb.astro';
+import { getWork, collectTech } from '@/lib/content';
+
+const work = await getWork();
+const allTech = collectTech(work);
+const hasInternship = work.some((w) => w.data.context === 'internship');
+const hasPersonal = work.some((w) => w.data.context === 'personal');
+
+const contexts = [
+  { value: 'all', label: 'All' },
+  ...(hasInternship ? [{ value: 'internship', label: 'Internship' }] : []),
+  ...(hasPersonal ? [{ value: 'personal', label: 'Personal' }] : []),
+];
+
+// Fill the row now, grow to 4 columns once there are enough projects.
+const cols = Math.min(4, Math.max(1, work.length));
+---
+
+<BaseLayout title="Portfolio" description="In-depth write-ups of my internship and personal engineering projects.">
+  <!-- Banner -->
+  <section class="banner">
+    <div class="banner-bg" aria-hidden="true"></div>
+    <div class="container banner-inner reveal">
+      <h1 class="display display-xl">Project Portfolio</h1>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="section section--light">
+    <div class="container-wide">
+      <div class="grid-head reveal">
+        <p class="eyebrow">The work</p>
+        <h2 class="display display-lg">Engineering Projects</h2>
+        <p class="grid-lede">
+          In-depth write-ups of my work — mostly from internships, plus personal projects. Filter
+          by type or tech.
+        </p>
+      </div>
+
+      <div class="filters reveal" role="group" aria-label="Filter projects">
+        <div class="filter-row" data-filter-group="context">
+          {
+            contexts.map((c, i) => (
+              <button class:list={['chip', { active: i === 0 }]} data-context={c.value} type="button">
+                {c.label}
+              </button>
+            ))
+          }
+        </div>
+        {
+          allTech.length > 0 && (
+            <div class="filter-row tech-row" data-filter-group="tech">
+              <button class="chip active" data-tech="all" type="button">
+                All tech
+              </button>
+              {allTech.map((t) => (
+                <button class="chip" data-tech={t} type="button">
+                  {t}
+                </button>
+              ))}
+            </div>
+          )
+        }
+      </div>
+
+      <div class="grid" id="work-grid" style={`--cols:${cols}`}>
+        {work.map((entry) => <ProjectThumb entry={entry} />)}
+      </div>
+      <p class="empty" id="empty-state" hidden>No projects match those filters.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .banner {
+    position: relative;
+    min-height: 62svh;
+    display: flex;
+    align-items: center;
+    background: var(--night);
+    color: #fff;
+    overflow: hidden;
+  }
+  .banner-bg {
+    position: absolute;
+    inset: 0;
+    background: url('/images/circuit-bg.svg') center / cover no-repeat;
+  }
+  .banner-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: 4.5rem;
+    text-align: center;
+    width: 100%;
+  }
+  .banner h1 { color: #fff; }
+
+  .grid-head { max-width: 46rem; margin-bottom: 2.5rem; }
+  .grid-head h2 { margin: 0.5rem 0 1rem; }
+  .grid-lede { color: var(--ink-muted); font-size: 1.05rem; margin: 0; }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 3rem;
+  }
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .tech-row {
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--line);
+  }
+  .chip {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .chip:hover { border-color: var(--accent); color: var(--ink); }
+  .chip.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+    gap: 2.75rem 1.75rem;
+  }
+  @media (min-width: 680px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    /* fill the row with what exists, capped at 4 */
+    .grid { grid-template-columns: repeat(var(--cols, 3), 1fr); }
+  }
+  .empty {
+    color: var(--ink-muted);
+    padding: 2rem 0;
+  }
+</style>
+
+<script>
+  const grid = document.getElementById('work-grid');
+  const empty = document.getElementById('empty-state');
+  const cards = Array.from(grid?.querySelectorAll<HTMLElement>('.thumb') ?? []);
+  let activeContext = 'all';
+  let activeTech = 'all';
+
+  function apply() {
+    let visible = 0;
+    for (const card of cards) {
+      const ctx = card.dataset.context ?? '';
+      const tech = (card.dataset.tech ?? '').split(',');
+      const ctxOk = activeContext === 'all' || ctx === activeContext;
+      const techOk = activeTech === 'all' || tech.includes(activeTech);
+      const show = ctxOk && techOk;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    }
+    if (empty) empty.hidden = visible !== 0;
+  }
+
+  function wire(group: string, onPick: (value: string) => void, key: string) {
+    const row = document.querySelector(`[data-filter-group="${group}"]`);
+    row?.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('.chip');
+      if (!btn) return;
+      row.querySelectorAll('.chip').forEach((c) => c.classList.remove('active'));
+      btn.classList.add('active');
+      onPick(btn.dataset[key] ?? 'all');
+      apply();
+    });
+  }
+
+  wire('context', (v) => (activeContext = v), 'context');
+  wire('tech', (v) => (activeTech = v), 'tech');
+</script>
