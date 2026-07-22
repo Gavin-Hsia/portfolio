@@ -1,7 +1,7 @@
 ---
 company: 'Hewlett Packard Enterprise'
 role: 'Networking R&D Hardware Design Intern'
-location: 'TODO(gavin): city / Remote'
+location: 'Roseville, CA'
 startDate: 'Jun 2026'
 endDate: 'Present'
 sortDate: 2026-06-01

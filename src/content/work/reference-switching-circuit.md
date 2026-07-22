@@ -30,9 +30,9 @@ signals bleed through in the switch's off state.
 - **Owned the redesign through bring-up** — from schematic and isolation-conscious layout to
   fabrication — then validated insertion and return loss against ITU-T G.703.
 
-## TODO(gavin): expand
+<!-- TODO(gavin): expand — hidden from the live page until you fill it in.
+     Add the deeper write-up here — the measurement setup, an off-isolation-vs-frequency plot,
+     the layout decisions that improved isolation, and before/after S-parameter results. Drop
+     images into public/images/reference-switching-circuit/ and reference them like:
+     ![off-isolation](/images/reference-switching-circuit/plot.png) -->
 
-Add the deeper write-up here — the measurement setup, an off-isolation-vs-frequency plot, the
-layout decisions that improved isolation, and before/after S-parameter results. Drop images into
-`public/images/reference-switching-circuit/` and reference them like
-`![off-isolation](/images/reference-switching-circuit/plot.png)`.

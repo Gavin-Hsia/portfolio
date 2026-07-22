@@ -25,7 +25,7 @@ product.
 - Ran **bring-up, functional validation, and failure isolation** on prototype assemblies with
   oscilloscopes and logic analyzers to resolve hardware defects before release.
 
-## TODO(gavin): expand
+<!-- TODO(gavin): expand — hidden from the live page until you fill it in.
+     Add the details here — the rail architecture, what drove the 15% efficiency gain, the
+     bring-up process, and photos of the board. Images go in public/images/stratos-pro-v3/. -->
 
-Add the details here — the rail architecture, what drove the 15% efficiency gain, the bring-up
-process, and photos of the board. Images go in `public/images/stratos-pro-v3/`.

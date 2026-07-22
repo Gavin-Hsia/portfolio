@@ -1,7 +1,7 @@
 ---
 company: 'MOVD'
 role: 'Embedded Systems Engineering Intern'
-location: 'TODO(gavin): city / Remote'
+location: 'Santa Clara, CA'
 startDate: 'Jan 2025'
 endDate: 'Apr 2026'
 sortDate: 2025-01-01

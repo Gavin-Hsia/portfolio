@@ -24,7 +24,7 @@ vehicle.
 - Designed and validated vehicle-grade harnesses to maintain signal integrity on runs to the
   driver display module, sizing conductors and connectors to survive vibration and dynamic load.
 
-## TODO(gavin): expand
+<!-- TODO(gavin): expand — hidden from the live page until you fill it in.
+     Add details and photos — the grounding topology, how you sized conductors/fuses, and shots
+     of the harnesses on the car. Images go in public/images/electrical-system-integration/. -->
 
-Add details and photos — the grounding topology, how you sized conductors/fuses, and shots of
-the harnesses on the car. Images go in `public/images/electrical-system-integration/`.
