@@ -30,8 +30,7 @@ export const site = {
   ],
 
   /** Contact email. */
-  // NOTE(gavin): your resume lists gavin.hsia5@gmail.com — confirm which you want public.
-  email: 'gavin.h.hsia@gmail.com',
+  email: 'gavin.hsia5@gmail.com',
 
   /** Path to your resume PDF in /public. */
   resumePath: '/resume.pdf',
@@ -40,7 +39,7 @@ export const site = {
   socials: [
     { label: 'GitHub', href: 'https://github.com/Gavin-Hsia' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gavinhsia/' },
-    { label: 'Email', href: 'mailto:gavin.h.hsia@gmail.com' },
+    { label: 'Email', href: 'mailto:gavin.hsia5@gmail.com' },
   ] as SocialLink[],
 
   /** Skills grouped for the Resume page. From resume. */
