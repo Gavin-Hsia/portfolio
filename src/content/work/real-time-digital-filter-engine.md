@@ -4,7 +4,7 @@ summary: 'A difference-equation filter engine in C supporting FIR and IIR respon
 date: 2026-03-01
 context: 'personal'
 tech: ['C', 'ARM Cortex-M4', 'DSP', 'MATLAB']
-featured: true
+featured: false
 status: 'shipped'
 order: 3
 # repo: 'https://github.com/Gavin-Hsia/...'  # TODO(gavin): add if public

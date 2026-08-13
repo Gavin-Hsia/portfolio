@@ -4,7 +4,7 @@ summary: 'Low-voltage signal routing and power distribution for the vehicle’s 
 date: 2025-10-01
 context: 'personal'
 tech: ['Wiring Harness Design', 'Signal Integrity', 'Grounding', 'Power Distribution', 'Connectors']
-featured: false
+featured: true
 status: 'wip'
 order: 4
 # cover: '/images/electrical-system-integration/cover.png'  # TODO(gavin): add a harness/car photo
