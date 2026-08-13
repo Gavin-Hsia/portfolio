@@ -25,7 +25,7 @@ export const site = {
    * TODO(gavin): these are starter drafts from your resume — rewrite in your own voice.
    */
   bio: [
-    'I’m an Electrical & Computer Engineering student at Santa Clara University, currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise. I work on high-speed signal integrity — reference-timing and clock-distribution circuits, controlled-impedance routing, and taking boards from schematic through bring-up. I like the point where analog reality meets digital design: chasing down an off-isolation failure on a vector network analyzer, or trimming part count on an ESP32 board until the power rails are clean.',
+    'I’m an Electrical & Computer Engineering student at Santa Clara University, currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise. I work across the hardware stack — PCB design, signal integrity, and board bring-up — and just as comfortably on the embedded side, writing firmware and bringing up microcontrollers. I like the point where analog reality meets digital design: designing the board, then writing the code that makes it work.',
     'I’m currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise, and I build and validate hardware for SCU Formula SAE on the side. I’m always happy to talk hardware, embedded, or signal integrity — reach out.',
   ],
 
