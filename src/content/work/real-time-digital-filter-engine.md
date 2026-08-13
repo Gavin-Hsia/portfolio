@@ -8,7 +8,7 @@ featured: false
 status: 'shipped'
 order: 3
 # repo: 'https://github.com/Gavin-Hsia/...'  # TODO(gavin): add if public
-# cover: '/images/real-time-digital-filter-engine/cover.png'  # TODO(gavin): add a response plot
+cover: '/images/real-time-digital-filter-engine/cover.svg'
 ---
 
 ## What it is

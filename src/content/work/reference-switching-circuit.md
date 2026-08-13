@@ -9,7 +9,7 @@ featured: true
 status: 'wip'
 order: 1
 # repo / demo omitted — internal work
-# cover: '/images/reference-switching-circuit/cover.png'  # TODO(gavin): add a board/plot image
+cover: '/images/reference-switching-circuit/cover.svg'
 ---
 
 ## Context

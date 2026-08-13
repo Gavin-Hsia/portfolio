@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Digital filter frequency response">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1626"/><stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+    <linearGradient id="curve" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8cc4ff"/><stop offset="60%" stop-color="#4da3ff"/><stop offset="100%" stop-color="#2b8bff"/>
+    </linearGradient>
+    <linearGradient id="fill3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4da3ff" stop-opacity="0.28"/><stop offset="100%" stop-color="#4da3ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg3)"/>
+  <g stroke="#4da3ff" stroke-opacity="0.08" stroke-width="1.5">
+    <path d="M180 160 H1460 M180 300 H1460 M180 440 H1460 M180 580 H1460 M180 720 H1460"/>
+    <path d="M360 160 V820 M540 160 V820 M720 160 V820 M900 160 V820 M1080 160 V820 M1260 160 V820"/>
+  </g>
+  <path d="M180 160 V820 H1460" fill="none" stroke="#5b6675" stroke-width="2"/>
+  <text x="150" y="180" fill="#8894a3" font-family="monospace" font-size="26" text-anchor="end">0 dB</text>
+  <text x="150" y="825" fill="#8894a3" font-family="monospace" font-size="26" text-anchor="end">-80</text>
+  <text x="1450" y="870" fill="#8894a3" font-family="monospace" font-size="26" text-anchor="end">ω →</text>
+  <!-- equiripple passband, sharp transition, stopband -->
+  <path d="M180 250 L300 244 L360 256 L440 246 L520 258 L600 248 L680 255 L740 250
+           C 820 250, 860 300, 900 470
+           C 940 640, 980 720, 1040 690
+           C 1080 670, 1110 740, 1160 700
+           C 1210 665, 1250 745, 1300 705
+           C 1350 675, 1400 745, 1460 710"
+        fill="none" stroke="url(#curve)" stroke-width="6" stroke-linejoin="round"/>
+  <!-- soft fill under passband -->
+  <path d="M180 250 L740 250 C 820 250, 860 300, 900 470 L900 820 L180 820 Z" fill="url(#fill3)"/>
+  <line x1="740" y1="160" x2="740" y2="820" stroke="#4da3ff" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="8 8"/>
+  <text x="360" y="220" fill="#8cc4ff" font-family="monospace" font-size="28">passband</text>
+  <text x="1060" y="620" fill="#6f8bb0" font-family="monospace" font-size="28">stopband</text>
+  <text x="210" y="800" fill="#5b6675" font-family="monospace" font-size="24">FIR · IIR</text>
+</svg>

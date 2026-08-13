@@ -7,7 +7,7 @@ tech: ['Wiring Harness Design', 'Signal Integrity', 'Grounding', 'Power Distribu
 featured: true
 status: 'wip'
 order: 4
-# cover: '/images/electrical-system-integration/cover.png'  # TODO(gavin): add a harness/car photo
+cover: '/images/electrical-system-integration/cover.svg'
 ---
 
 ## Context

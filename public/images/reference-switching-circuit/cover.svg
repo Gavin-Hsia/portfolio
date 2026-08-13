@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Signal-integrity S-parameter plot">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1626"/><stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+    <linearGradient id="ins" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4da3ff"/><stop offset="100%" stop-color="#8cc4ff"/>
+    </linearGradient>
+    <linearGradient id="iso" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <!-- grid -->
+  <g stroke="#4da3ff" stroke-opacity="0.08" stroke-width="1.5">
+    <path d="M180 120 H1460 M180 260 H1460 M180 400 H1460 M180 540 H1460 M180 680 H1460 M180 820 H1460"/>
+    <path d="M320 120 V820 M500 120 V820 M680 120 V820 M860 120 V820 M1040 120 V820 M1220 120 V820 M1400 120 V820"/>
+  </g>
+  <!-- axes -->
+  <g stroke="#5b6675" stroke-width="2">
+    <path d="M180 120 V820 H1460" fill="none"/>
+  </g>
+  <text x="150" y="140" fill="#8894a3" font-family="monospace" font-size="26" text-anchor="end">0 dB</text>
+  <text x="150" y="825" fill="#8894a3" font-family="monospace" font-size="26" text-anchor="end">-60</text>
+  <text x="1450" y="870" fill="#8894a3" font-family="monospace" font-size="26" text-anchor="end">frequency →</text>
+  <!-- insertion loss (pass-through, near 0 dB, gentle droop) -->
+  <path d="M180 200 C 560 210, 900 230, 1460 300" fill="none" stroke="url(#ins)" stroke-width="6" stroke-linecap="round"/>
+  <text x="210" y="180" fill="#8cc4ff" font-family="monospace" font-size="28">S21 insertion</text>
+  <!-- off-isolation: high isolation at low f, degrading upward with frequency -->
+  <path d="M180 780 C 520 760, 780 690, 1000 600 S 1320 430, 1460 360" fill="none" stroke="url(#iso)" stroke-width="6" stroke-linecap="round"/>
+  <text x="1040" y="560" fill="#f59e0b" font-family="monospace" font-size="28">off-isolation</text>
+  <!-- 10 MHz marker -->
+  <line x1="680" y1="120" x2="680" y2="820" stroke="#f59e0b" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="8 8"/>
+  <circle cx="680" cy="672" r="9" fill="#f59e0b"/>
+  <text x="700" y="160" fill="#c9d2de" font-family="monospace" font-size="26">10 MHz</text>
+</svg>

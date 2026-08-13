@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Custom ESP32 PCB with OLED">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1512"/><stop offset="100%" stop-color="#07100e"/>
+    </linearGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f3b30"/><stop offset="100%" stop-color="#0a2a22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg2)"/>
+  <!-- board -->
+  <rect x="300" y="180" width="1000" height="640" rx="22" fill="url(#board)" stroke="#1f6b56" stroke-width="3"/>
+  <!-- mounting holes -->
+  <g fill="none" stroke="#2f9c7f" stroke-width="4">
+    <circle cx="360" cy="240" r="18"/><circle cx="1240" cy="240" r="18"/>
+    <circle cx="360" cy="760" r="18"/><circle cx="1240" cy="760" r="18"/>
+  </g>
+  <!-- copper traces -->
+  <g fill="none" stroke="#3fd6ab" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round">
+    <path d="M470 470 H640 L690 420 H860"/>
+    <path d="M470 540 H600 L650 590 H900 L950 540"/>
+    <path d="M1080 360 H960 L920 400 V520"/>
+    <path d="M1120 640 H900 L860 680 H620"/>
+    <path d="M760 300 V360 M810 300 V360 M860 300 V360"/>
+  </g>
+  <g fill="#7cf0cf"><circle cx="690" cy="420" r="6"/><circle cx="650" cy="590" r="6"/><circle cx="920" cy="520" r="6"/><circle cx="860" cy="680" r="6"/></g>
+  <!-- ESP32 module -->
+  <rect x="470" y="420" width="240" height="200" rx="10" fill="#0c1c18" stroke="#3fd6ab" stroke-width="3"/>
+  <rect x="500" y="450" width="150" height="110" rx="6" fill="#123" stroke="#2f9c7f" stroke-width="2"/>
+  <g fill="#2f9c7f"><rect x="470" y="440" width="10" height="14"/><rect x="470" y="470" width="10" height="14"/><rect x="470" y="500" width="10" height="14"/><rect x="470" y="530" width="10" height="14"/><rect x="470" y="560" width="10" height="14"/><rect x="470" y="590" width="10" height="14"/></g>
+  <text x="590" y="600" fill="#7cf0cf" font-family="monospace" font-size="24" text-anchor="middle">ESP32</text>
+  <!-- OLED display -->
+  <rect x="880" y="300" width="330" height="200" rx="10" fill="#04110d" stroke="#3fd6ab" stroke-width="3"/>
+  <rect x="905" y="325" width="280" height="150" rx="4" fill="#02201a"/>
+  <g fill="#7cf0cf" font-family="monospace">
+    <text x="925" y="380" font-size="30">STRATOS</text>
+    <text x="925" y="430" font-size="22" fill="#3fd6ab">v3 · online</text>
+  </g>
+  <!-- components -->
+  <g fill="#0c1c18" stroke="#2f9c7f" stroke-width="2">
+    <rect x="500" y="670" width="70" height="34" rx="4"/><rect x="600" y="670" width="70" height="34" rx="4"/>
+    <rect x="1050" y="560" width="34" height="70" rx="4"/><rect x="1110" y="560" width="34" height="70" rx="4"/>
+  </g>
+  <!-- test points -->
+  <g fill="none" stroke="#7cf0cf" stroke-width="3"><circle cx="1160" cy="700" r="12"/><circle cx="1210" cy="700" r="12"/></g>
+</svg>

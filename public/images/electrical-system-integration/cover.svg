@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Formula SAE wiring harness">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#160c10"/><stop offset="100%" stop-color="#0a0708"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg4)"/>
+  <g stroke="#7a1f2b" stroke-opacity="0.10" stroke-width="1.5">
+    <path d="M0 250 H1600 M0 500 H1600 M0 750 H1600"/>
+  </g>
+  <!-- connector blocks -->
+  <g>
+    <rect x="120" y="360" width="150" height="260" rx="14" fill="#160e10" stroke="#8a2633" stroke-width="3"/>
+    <g fill="#b0333f"><rect x="150" y="400" width="90" height="22" rx="4"/><rect x="150" y="440" width="90" height="22" rx="4"/><rect x="150" y="480" width="90" height="22" rx="4"/><rect x="150" y="520" width="90" height="22" rx="4"/><rect x="150" y="560" width="90" height="22" rx="4"/></g>
+    <text x="195" y="345" fill="#c9d2de" font-family="monospace" font-size="24" text-anchor="middle">ECU</text>
+  </g>
+  <!-- wire bundle: several colored conductors branching right -->
+  <g fill="none" stroke-width="7" stroke-linecap="round">
+    <path d="M270 411 C 520 411, 560 250, 900 250 S 1250 250, 1360 250" stroke="#d64550"/>
+    <path d="M270 451 C 520 451, 620 470, 900 470 S 1250 470, 1360 470" stroke="#e0a52b"/>
+    <path d="M270 491 C 560 491, 640 680, 980 680 S 1260 680, 1360 680" stroke="#3fd6ab"/>
+    <path d="M270 531 C 540 531, 620 560, 900 560 S 1200 560, 1360 560" stroke="#4da3ff"/>
+    <path d="M270 571 C 520 571, 600 360, 900 360 S 1240 360, 1360 360" stroke="#cbd5e1" stroke-opacity="0.7"/>
+  </g>
+  <!-- branch nodes -->
+  <g fill="#0a0708" stroke="#8a2633" stroke-width="2">
+    <circle cx="900" cy="250" r="10"/><circle cx="900" cy="470" r="10"/><circle cx="980" cy="680" r="10"/><circle cx="900" cy="560" r="10"/><circle cx="900" cy="360" r="10"/>
+  </g>
+  <!-- right-side sensor/connector tabs -->
+  <g fill="#160e10" stroke="#8a2633" stroke-width="3">
+    <rect x="1360" y="222" width="120" height="56" rx="8"/>
+    <rect x="1360" y="332" width="120" height="56" rx="8"/>
+    <rect x="1360" y="442" width="120" height="56" rx="8"/>
+    <rect x="1360" y="532" width="120" height="56" rx="8"/>
+    <rect x="1360" y="652" width="120" height="56" rx="8"/>
+  </g>
+  <g fill="#8894a3" font-family="monospace" font-size="22">
+    <text x="1360" y="770">temp · pressure sensing</text>
+    <text x="120" y="700" fill="#7a5560">low-voltage harness</text>
+  </g>
+</svg>

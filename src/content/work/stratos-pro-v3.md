@@ -8,7 +8,7 @@ tech: ['KiCad', 'ESP32', 'PCB Design', 'Power Regulation', 'Oscilloscope', 'Logi
 featured: true
 status: 'shipped'
 order: 2
-# cover: '/images/stratos-pro-v3/cover.png'  # TODO(gavin): add a board render/photo
+cover: '/images/stratos-pro-v3/cover.svg'
 ---
 
 ## Context
