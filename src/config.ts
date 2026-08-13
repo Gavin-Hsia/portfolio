@@ -18,7 +18,7 @@ export const site = {
 
   /** One-line pitch for the hero. Keep it punchy. */
   tagline:
-    'Hardware & embedded engineer — PCB design, signal integrity, and microcontroller bring-up. This is the in-depth home for my internship and personal work.',
+    'Hardware & networking engineer — PCB design, signal integrity, and board bring-up. This is the in-depth home for my internship and personal work.',
 
   /**
    * Longer bio. bio[0] shows on the home intro; bio[1] shows on the contact page.
