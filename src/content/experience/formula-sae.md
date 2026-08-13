@@ -1,5 +1,6 @@
 ---
 company: 'SCU Formula SAE'
+logo: '/images/formula-fsae.jpg'
 role: 'Wiring Integration — Electrical Team'
 location: 'Santa Clara, CA'
 startDate: 'Oct 2025'

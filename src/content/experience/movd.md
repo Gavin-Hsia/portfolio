@@ -1,5 +1,6 @@
 ---
 company: 'MOVD'
+logo: '/images/movd.jpeg'
 role: 'Embedded Systems Engineering Intern'
 location: 'Santa Clara, CA'
 startDate: 'Jan 2025'

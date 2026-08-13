@@ -1,5 +1,6 @@
 ---
 company: 'Wacom'
+logo: '/images/Wacom-Logo.jpg'
 role: 'Software Engineering Intern'
 location: 'Portland, OR'
 startDate: 'May 2024'

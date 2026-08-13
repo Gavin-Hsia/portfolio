@@ -1,5 +1,6 @@
 ---
 company: 'Hewlett Packard Enterprise'
+logo: '/images/media_1903fc2ea6e40aa1e2900fb3a528a9ddbbd7c5f15.jpg'
 role: 'Networking R&D Hardware Design Intern'
 location: 'Roseville, CA'
 startDate: 'Jun 2026'

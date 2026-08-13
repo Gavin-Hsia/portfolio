@@ -39,31 +39,38 @@ const workBySlug = new Map(
                 .map((slug) => workBySlug.get(slug))
                 .filter((w) => Boolean(w));
               return (
-                <li class="entry reveal">
-                  <div class="entry-head">
-                    <h3 class="entry-role">
-                      {exp.data.role} <span class="at">·</span> {exp.data.company}
-                    </h3>
-                    <span class="entry-dates">
-                      {exp.data.startDate} — {exp.data.endDate}
-                    </span>
-                  </div>
-                  {exp.data.location && <p class="entry-loc">{exp.data.location}</p>}
-                  <p class="entry-summary">{exp.data.summary}</p>
-                  {exp.data.tech.length > 0 && (
-                    <div class="entry-tech">
-                      {exp.data.tech.map((t) => (
-                        <TechTag label={t} />
-                      ))}
+                <li class="entry entry--exp reveal">
+                  {exp.data.logo && (
+                    <div class="entry-logo" data-company={exp.data.company}>
+                      <img src={exp.data.logo} alt={`${exp.data.company} logo`} loading="lazy" />
                     </div>
                   )}
-                  {related.length > 0 && (
-                    <p class="entry-related">
-                      {related.map((w) => (
-                        <a href={workHref(w!)}>{w!.data.title} →</a>
-                      ))}
-                    </p>
-                  )}
+                  <div class="entry-content">
+                    <div class="entry-head">
+                      <h3 class="entry-role">
+                        {exp.data.role} <span class="at">·</span> {exp.data.company}
+                      </h3>
+                      <span class="entry-dates">
+                        {exp.data.startDate} — {exp.data.endDate}
+                      </span>
+                    </div>
+                    {exp.data.location && <p class="entry-loc">{exp.data.location}</p>}
+                    <p class="entry-summary">{exp.data.summary}</p>
+                    {exp.data.tech.length > 0 && (
+                      <div class="entry-tech">
+                        {exp.data.tech.map((t) => (
+                          <TechTag label={t} />
+                        ))}
+                      </div>
+                    )}
+                    {related.length > 0 && (
+                      <p class="entry-related">
+                        {related.map((w) => (
+                          <a href={workHref(w!)}>{w!.data.title} →</a>
+                        ))}
+                      </p>
+                    )}
+                  </div>
                 </li>
               );
             })
@@ -162,6 +169,37 @@ const workBySlug = new Map(
     border-top: 1px solid var(--line);
   }
   .entry:last-child { border-bottom: 1px solid var(--line); }
+
+  /* Experience rows: logo tile + content */
+  .entry--exp {
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+  }
+  .entry-content { flex: 1; min-width: 0; }
+  .entry-logo {
+    flex: 0 0 auto;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.2rem;
+  }
+  .entry-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  /* MOVD mark is white on black — fill the tile so it reads */
+  .entry-logo[data-company='MOVD'] { background: #000; border-color: #000; }
+  @media (max-width: 520px) {
+    .entry-logo { width: 2.75rem; height: 2.75rem; }
+  }
   .entry-head {
     display: flex;
     flex-wrap: wrap;
