@@ -1,6 +1,7 @@
 ---
 company: 'Wacom'
 role: 'Software Engineering Intern'
+location: 'Portland, OR'
 startDate: 'May 2024'
 endDate: 'Sep 2025'
 sortDate: 2024-05-01
