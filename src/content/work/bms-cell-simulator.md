@@ -1,32 +1,29 @@
 ---
 title: 'BMS Cell Simulator'
 summary: 'An isolated single-cell battery emulator for bench-testing Battery Management Systems — a programmable 2.5–4.5 V / 200 mA source with on-board current sensing, driven by an STM32G431 over serial and designed to stack in series to emulate a full pack.'
-date: 2025-11-01
+date: 2026-07-01
 context: 'personal'
 tech: ['KiCad', 'STM32G431', 'Analog Design', 'Embedded C', 'UART', 'Power Electronics', 'Isolation']
 featured: false
 status: 'shipped'
 order: 5
-# cover: '/images/bms-cell-simulator/schematic.png'  # TODO(gavin): add your schematic screenshot
+cover: '/images/bms-cell-simulator/schematic.png'
 ---
 
 ## Overview
 
-A take-home design project: build a circuit that simulates a single battery cell so a
-**Battery Management System (BMS)** can be tested on the bench without a real pack. The simulator
-presents a programmable voltage from **2.5 V to 4.5 V**, sources up to **200 mA**, and measures the
-current the BMS draws while balancing. An **STM32G431CBT6** sets the voltage and reports the
-measured current to a computer over serial. The whole simulator runs in an **isolated power domain**
-so that multiple units can be stacked in series to emulate a full pack. I designed the schematic and
-PCB layout in **KiCad**.
+A circuit that simulates a single battery cell so a **Battery Management System (BMS)** can be
+tested on the bench without a real pack. The simulator presents a programmable voltage from
+**2.5 V to 4.5 V**, sources up to **200 mA**, and measures the current the BMS draws while balancing.
+An **STM32G431CBT6** sets the voltage and reports the measured current to a computer over serial.
+The whole simulator runs in an **isolated power domain** so that multiple units can be stacked in
+series to emulate a full pack. I designed the schematic and PCB layout in **KiCad**.
 
-<!-- TODO(gavin): add your schematic screenshot here. Drop it in
-     public/images/bms-cell-simulator/ then reference it, e.g.:
-     ![System schematic](/images/bms-cell-simulator/schematic.png) -->
+![System schematic](/images/bms-cell-simulator/schematic.png)
 
 ## Voltage generation
 
-*Requirement: an adjustable 2.5–4.5 V output that holds within 5% while sourcing up to 200 mA.*
+*Target: an adjustable 2.5–4.5 V output that holds within 5% while sourcing up to 200 mA.*
 
 - I used the STM32's internal **12-bit DAC** to set the target, followed by an **op-amp and a
   P-channel MOSFET pass device in a closed feedback loop**. The op-amp compares the DAC setpoint
@@ -42,7 +39,7 @@ PCB layout in **KiCad**.
 
 ## Current measurement
 
-*Requirement: measure output current up to 200 mA within 10% and report it.*
+*Target: measure output current up to 200 mA within 10% and report it.*
 
 - **Low-side shunt → fixed-gain current-sense amp (INA180A3, gain 100) → RC filter → internal ADC.**
   A 0.1 Ω shunt drops 20 mV at 200 mA (just 4 mW dissipation); a gain of 100 scales that to 2 V,
@@ -62,10 +59,10 @@ PCB layout in **KiCad**.
   while still presenting a standard serial port.
 - I pushed the USB-to-serial conversion **off the board into a standard cable** — since this is bench
   test equipment, not a shipped product, that cuts board complexity for the same function.
-- Isolation was the constraint underneath everything: the spec's isolated 5 V supply signals the
-  simulator is meant to float, so the whole design stays in one floating domain referenced to
-  `GND_ISO`, crossing the barrier only through the isolator (independent power and ground on each
-  side). That's what lets units stack in series to emulate a full pack.
+- Isolation was the constraint underneath everything: an isolated 5 V supply means the simulator is
+  meant to float, so the whole design stays in one floating domain referenced to `GND_ISO`, crossing
+  the barrier only through the isolator (independent power and ground on each side). That's what lets
+  units stack in series to emulate a full pack.
 
 ## Firmware
 
