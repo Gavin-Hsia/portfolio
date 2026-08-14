@@ -28,11 +28,6 @@ switched off, whatever sits on that input has to be strongly attenuated so it ca
 output. This board was **failing that requirement**. Reference signals were leaking through in the
 switch's off state, above the allowed level.
 
-![Reference distribution signal path](/images/reference-switching-circuit/signal-path.svg)
-
-*The distribution path: the analog switch selects a reference source, and the buffer and comparator
-condition it for fan-out. Off-isolation is the switch's job in this chain.*
-
 ## Root-causing the failure
 
 Instead of swapping parts and hoping, I measured **channel attenuation stage by stage**, across
