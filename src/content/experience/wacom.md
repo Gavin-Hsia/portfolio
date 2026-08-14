@@ -7,7 +7,7 @@ startDate: 'May 2024'
 endDate: 'Sep 2025'
 sortDate: 2024-05-01
 tech: ['C#', 'XAML', 'WinUI 3', '.NET', 'Linux Kernel', 'C', 'HID', 'Git']
-summary: 'Software engineering across the Wacom Center desktop app (WinUI 3 / C#) and upstream Linux kernel HID drivers — refactored device-specific styling and improved stylus and touch reliability across Wacom hardware.'
+summary: 'Software engineering across the Wacom Center desktop app (WinUI 3 / C#) and upstream Linux kernel HID drivers, refactoring device-specific styling and improving stylus and touch reliability across Wacom hardware.'
 related: []
 ---
 

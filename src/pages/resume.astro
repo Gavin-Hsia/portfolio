@@ -11,7 +11,7 @@ const workBySlug = new Map(
 );
 ---
 
-<BaseLayout title="Resume" description={`${site.name} — resume, experience, education, and skills.`}>
+<BaseLayout title="Resume" description={`Resume, experience, education, and skills for ${site.name}.`}>
   <!-- Banner -->
   <section class="banner">
     <div class="banner-bg" aria-hidden="true"></div>
@@ -51,7 +51,7 @@ const workBySlug = new Map(
                         {exp.data.role} <span class="at">·</span> {exp.data.company}
                       </h3>
                       <span class="entry-dates">
-                        {exp.data.startDate} — {exp.data.endDate}
+                        {exp.data.startDate} to {exp.data.endDate}
                       </span>
                     </div>
                     {exp.data.location && <p class="entry-loc">{exp.data.location}</p>}
@@ -195,7 +195,7 @@ const workBySlug = new Map(
     height: 100%;
     object-fit: contain;
   }
-  /* MOVD mark is white on black — fill the tile so it reads */
+  /* MOVD mark is white on black, fill the tile so it reads */
   .entry-logo[data-company='MOVD'] { background: #000; border-color: #000; }
   @media (max-width: 520px) {
     .entry-logo { width: 2.75rem; height: 2.75rem; }

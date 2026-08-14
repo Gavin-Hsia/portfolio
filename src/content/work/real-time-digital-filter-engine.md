@@ -24,8 +24,8 @@ processing.
 - Circular-buffer state management keeps per-sample work bounded and predictable for real-time
   use.
 
-<!-- TODO(gavin): expand — hidden from the live page until you fill it in.
-     Add the deeper notes — the buffer/coefficient design, how you validated against
+<!-- TODO(gavin): expand, hidden from the live page until you fill it in.
+     Add the deeper notes, the buffer/coefficient design, how you validated against
      MATLAB-designed filters, measured throughput on the M4, and a frequency-response plot.
      Link the repo if it's public. -->
 

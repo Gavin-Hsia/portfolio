@@ -1,6 +1,6 @@
 ---
 title: 'Stratos Pro V3'
-summary: 'A custom ESP32 PCB with an integrated OLED display — improved system efficiency ~15% through power-rail and component-selection changes.'
+summary: 'A custom ESP32 PCB with an integrated OLED display that improved system efficiency ~15% through power-rail and component-selection changes.'
 date: 2025-01-01
 context: 'internship'
 company: 'MOVD'
@@ -25,7 +25,7 @@ product.
 - Ran **bring-up, functional validation, and failure isolation** on prototype assemblies with
   oscilloscopes and logic analyzers to resolve hardware defects before release.
 
-<!-- TODO(gavin): expand — hidden from the live page until you fill it in.
-     Add the details here — the rail architecture, what drove the 15% efficiency gain, the
+<!-- TODO(gavin): expand, hidden from the live page until you fill it in.
+     Add the details here, the rail architecture, what drove the 15% efficiency gain, the
      bring-up process, and photos of the board. Images go in public/images/stratos-pro-v3/. -->
 

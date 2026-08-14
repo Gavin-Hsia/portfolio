@@ -1,7 +1,7 @@
 // ============================================================
 // Site-wide config. Edit this file to personalize the whole site.
 // Factual data below is filled in from Gavin's resume.
-// Prose fields left as placeholders are marked TODO(gavin) — fill those in.
+// Prose fields left as placeholders are marked TODO(gavin), fill those in.
 // ============================================================
 
 export interface SocialLink {
@@ -10,7 +10,7 @@ export interface SocialLink {
 }
 
 export const site = {
-  /** Your name — shown in the header, hero, and page titles. */
+  /** Your name, shown in the header, hero, and page titles. */
   name: 'Gavin Hsia',
 
   /** Short handle / role shown under your name. */
@@ -18,15 +18,15 @@ export const site = {
 
   /** One-line pitch for the hero. Keep it punchy. */
   tagline:
-    'Hardware & networking engineer — PCB design, signal integrity, and board bring-up. This is the in-depth home for my internship and personal work.',
+    'Hardware & networking engineer focused on PCB design, signal integrity, and board bring-up. This is the in-depth home for my internship and personal work.',
 
   /**
    * Longer bio. bio[0] shows on the home intro; bio[1] shows on the contact page.
-   * TODO(gavin): these are starter drafts from your resume — rewrite in your own voice.
+   * TODO(gavin): these are starter drafts from your resume, rewrite in your own voice.
    */
   bio: [
-    'I’m an Electrical & Computer Engineering student at Santa Clara University, currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise. I work across the hardware stack — PCB design, signal integrity, and board bring-up — and just as comfortably on the embedded side, writing firmware and bringing up microcontrollers. What I enjoy most is owning a design end to end: laying out the hardware, then writing the firmware that runs on it.',
-    'I’m currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise, and I build and validate hardware for SCU Formula SAE on the side. I’m always happy to talk hardware, embedded, or signal integrity — reach out.',
+    'I’m an Electrical & Computer Engineering student at Santa Clara University, currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise. I work across the hardware stack, from PCB design and signal integrity to board bring-up, and just as comfortably on the embedded side, writing firmware and bringing up microcontrollers. What I enjoy most is owning a design end to end: laying out the hardware, then writing the firmware that runs on it.',
+    'I’m currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise, and I build and validate hardware for SCU Formula SAE on the side. I’m always happy to talk hardware, embedded, or signal integrity, so feel free to reach out.',
   ],
 
   /** Contact email. */

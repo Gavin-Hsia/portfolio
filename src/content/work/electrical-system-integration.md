@@ -1,5 +1,5 @@
 ---
-title: 'Electrical System Integration — Formula SAE'
+title: 'Formula SAE Electrical System Integration'
 summary: 'Low-voltage signal routing and power distribution for the vehicle’s temperature and pressure sensing subsystems, with grounding, fuse protection, and connector current ratings analyzed across the car.'
 date: 2025-10-01
 context: 'personal'
@@ -24,7 +24,7 @@ vehicle.
 - Designed and validated vehicle-grade harnesses to maintain signal integrity on runs to the
   driver display module, sizing conductors and connectors to survive vibration and dynamic load.
 
-<!-- TODO(gavin): expand — hidden from the live page until you fill it in.
-     Add details and photos — the grounding topology, how you sized conductors/fuses, and shots
+<!-- TODO(gavin): expand, hidden from the live page until you fill it in.
+     Add details and photos, the grounding topology, how you sized conductors/fuses, and shots
      of the harnesses on the car. Images go in public/images/electrical-system-integration/. -->
 

@@ -7,7 +7,7 @@ startDate: 'Jun 2026'
 endDate: 'Present'
 sortDate: 2026-06-01
 tech: ['Cadence Allegro', 'Cadence SKILL', 'Python', 'Vector Network Analyzer', 'Signal Integrity']
-summary: 'Networking R&D hardware team — diagnosed an ITU-T G.703 timing-circuit isolation failure, qualified a replacement analog switch on a VNA, and automated PCB net documentation.'
+summary: 'On the networking R&D hardware team: diagnosed an ITU-T G.703 timing-circuit isolation failure, qualified a replacement analog switch on a VNA, and automated PCB net documentation.'
 related: ['reference-switching-circuit']
 ---
 

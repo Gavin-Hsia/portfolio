@@ -3,9 +3,9 @@ import { defineCollection, z } from 'astro:content';
 // ============================================================
 // Content collections.
 //
-// `work`       — the unified, in-depth write-ups. Each entry is one project,
+// `work`      , the unified, in-depth write-ups. Each entry is one project,
 //                tagged by `context` as internship or personal work.
-// `experience` — lightweight role summaries that render as a timeline and can
+// `experience`, lightweight role summaries that render as a timeline and can
 //                link into the matching `work` write-ups.
 //
 // To add a project: drop a new .md file into src/content/work/ with the
@@ -23,7 +23,7 @@ const work = defineCollection({
     date: z.coerce.date(),
     /** Where the work came from. Drives the card label and filtering. */
     context: z.enum(['internship', 'personal']),
-    /** Company name — shown when context is "internship". */
+    /** Company name, shown when context is "internship". */
     company: z.string().optional(),
     /** Tech stack tags. */
     tech: z.array(z.string()).default([]),
