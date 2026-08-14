@@ -72,10 +72,3 @@ the output.
 I validated the reworked path's **insertion loss and return loss against ITU-T G.703**, the ITU
 standard defining the electrical characteristics for this class of timing/reference interface, to
 confirm the redesign met the requirement it had been failing.
-
-<!-- Note to Gavin: this is written at a general, non-proprietary level. To go deeper, paste real
-     specifics from your notes/chats, measurement setup, an off-isolation-vs-frequency plot, or
-     before/after numbers, and I'll fold them in. Drop images in
-     public/images/reference-switching-circuit/ and reference like
-     ![off-isolation](/images/reference-switching-circuit/plot.png) -->
-

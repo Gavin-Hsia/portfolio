@@ -62,8 +62,3 @@ I ran bring-up and functional validation on the prototype assemblies:
 Owning multiple revisions of the same board taught me how much of good hardware is designing for the
 bench: the rails you can probe, the test points you place, and the bring-up plan you think through
 before the boards ever arrive.
-
-<!-- Note to Gavin: general, non-proprietary level. Add real specifics from your notes (the actual
-     rail architecture, measured before/after power numbers, a board photo) and I'll fold them in.
-     Board photos go in public/images/stratos-pro-v3/. -->
-

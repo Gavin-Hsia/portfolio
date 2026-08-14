@@ -51,7 +51,3 @@ Across the car I analyzed **fuse protection, connector current ratings, and cond
 Designing and validating **vehicle-grade harnesses** means building for the real environment, not
 the bench: strain relief so vibration does not fatigue a joint, routing that keeps harnesses off hot
 and moving parts, and terminations that hold up through repeated build-and-teardown cycles.
-
-<!-- Note to Gavin: add photos of the harnesses on the car and any specifics (gauges, fuse values,
-     connector series) you want to show. Images go in public/images/electrical-system-integration/. -->
-

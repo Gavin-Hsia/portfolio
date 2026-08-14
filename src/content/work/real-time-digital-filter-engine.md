@@ -7,7 +7,7 @@ tech: ['C', 'ARM Cortex-M4', 'DSP', 'MATLAB']
 featured: false
 status: 'shipped'
 order: 3
-# repo: 'https://github.com/Gavin-Hsia/...'  # TODO(gavin): add if public
+# repo: 'https://github.com/Gavin-Hsia/...'
 cover: '/images/real-time-digital-filter-engine/cover.svg'
 ---
 
@@ -57,8 +57,3 @@ to trust.
 Building around the difference equation and circular buffers made this a general tool instead of a
 one-off filter: to get a new response, I design it in MATLAB and drop in the coefficients, and the
 real-time behavior comes for free.
-
-<!-- Note to Gavin: add real specifics when you have them (sample rate, measured per-sample cycles on
-     the M4, fixed vs floating point, a response plot comparing engine vs MATLAB) and the repo link.
-     Images go in public/images/real-time-digital-filter-engine/. -->
-

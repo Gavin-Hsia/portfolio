@@ -1,7 +1,6 @@
 // ============================================================
 // Site-wide config. Edit this file to personalize the whole site.
 // Factual data below is filled in from Gavin's resume.
-// Prose fields left as placeholders are marked TODO(gavin), fill those in.
 // ============================================================
 
 export interface SocialLink {
@@ -22,7 +21,6 @@ export const site = {
 
   /**
    * Longer bio. bio[0] shows on the home intro; bio[1] shows on the contact page.
-   * TODO(gavin): these are starter drafts from your resume, rewrite in your own voice.
    */
   bio: [
     'I’m an Electrical & Computer Engineering student at Santa Clara University, currently a Networking R&D Hardware Design Intern at Hewlett Packard Enterprise. I work across the hardware stack, from PCB design and signal integrity to board bring-up, and just as comfortably on the embedded side, writing firmware and bringing up microcontrollers. What I enjoy most is owning a design end to end: laying out the hardware, then writing the firmware that runs on it.',
