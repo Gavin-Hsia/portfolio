@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470" role="img" aria-label="Off-state feedthrough equivalent circuit">
+  <defs>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b8bff"/>
+    </marker>
+    <style>
+      .w { fill:none; stroke:#101114; stroke-width:2.4; stroke-linecap:round; }
+      .n { fill:#101114; }
+      .mono { font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; font-size:22px; fill:#101114; }
+      .cap { font-family:ui-monospace,monospace; font-size:22px; fill:#0b63c4; }
+      .desc { font-family:'Inter',system-ui,sans-serif; font-size:20px; fill:#3b3f47; }
+      .leak { fill:none; stroke:#2b8bff; stroke-width:2.2; stroke-dasharray:6 6; }
+    </style>
+  </defs>
+  <rect width="1200" height="470" fill="#ffffff"/>
+
+  <!-- AC source (off-channel input) -->
+  <circle cx="150" cy="240" r="38" fill="#ffffff" stroke="#101114" stroke-width="2.4"/>
+  <path d="M128 240 q11 -20 22 0 q11 20 22 0" fill="none" stroke="#101114" stroke-width="2.2"/>
+  <text class="mono" x="150" y="330" text-anchor="middle">off input</text>
+
+  <!-- wire to node A -->
+  <path class="w" d="M188 240 H360"/>
+  <circle class="n" cx="360" cy="240" r="4.5"/>
+
+  <!-- open switch -->
+  <path class="w" d="M360 240 L448 176"/>            <!-- open lever -->
+  <circle class="n" cx="520" cy="240" r="4.5"/>
+  <path class="w" d="M520 240 H700"/>
+  <text class="mono" x="452" y="232" fill="#6b7280" font-size="20">switch OFF</text>
+
+  <!-- C_off feedthrough bridging the open switch (top branch) -->
+  <path class="w" d="M360 240 V120 H428"/>
+  <path class="w" d="M452 120 H520 V240"/>
+  <line x1="428" y1="96" x2="428" y2="144" stroke="#0b63c4" stroke-width="3"/>
+  <line x1="452" y1="96" x2="452" y2="144" stroke="#0b63c4" stroke-width="3"/>
+  <text class="cap" x="440" y="80" text-anchor="middle">C_off</text>
+
+  <!-- output node + load -->
+  <circle class="n" cx="700" cy="240" r="4.5"/>
+  <path class="w" d="M700 240 H860" marker-end="url(#arrow2)"/>
+  <text class="mono" x="872" y="246">to buffer / output</text>
+  <rect x="686" y="270" width="28" height="66" fill="#ffffff" stroke="#101114" stroke-width="2.4"/>
+  <path class="w" d="M700 336 V360"/>
+  <text class="mono" x="726" y="312" font-size="20">R_load</text>
+  <!-- ground -->
+  <line x1="676" y1="360" x2="724" y2="360" stroke="#101114" stroke-width="2.4"/>
+  <line x1="684" y1="370" x2="716" y2="370" stroke="#101114" stroke-width="2.4"/>
+  <line x1="692" y1="380" x2="708" y2="380" stroke="#101114" stroke-width="2.4"/>
+
+  <!-- leakage current path highlight -->
+  <path class="leak" d="M360 214 V140 H700 V214" marker-end="url(#a2)"/>
+  <text x="600" y="128" font-family="ui-monospace,monospace" font-size="20" fill="#2b8bff">i_leak through C_off</text>
+
+  <!-- arrowhead for output wire -->
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#101114"/>
+    </marker>
+  </defs>
+
+  <!-- caption -->
+  <text class="desc" x="600" y="430" text-anchor="middle">In the off state, C_off forms a high-pass leakage path: its impedance 1/(2πfC) falls as frequency</text>
+  <text class="desc" x="600" y="456" text-anchor="middle">rises, so off-isolation degrades with frequency.</text>
+</svg>

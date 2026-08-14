@@ -28,6 +28,11 @@ switched off, whatever sits on that input has to be strongly attenuated so it ca
 output. This board was **failing that requirement**. Reference signals were leaking through in the
 switch's off state, above the allowed level.
 
+![Reference distribution signal path](/images/reference-switching-circuit/signal-path.svg)
+
+*The distribution path: the analog switch selects a reference source, and the buffer and comparator
+condition it for fan-out. Off-isolation is the switch's job in this chain.*
+
 ## Root-causing the failure
 
 Instead of swapping parts and hoping, I measured **channel attenuation stage by stage**, across
@@ -39,6 +44,11 @@ The mechanism is the switch's off-state feedthrough. Even when it's "open," a sw
 small feedthrough capacitance that forms a high-pass leakage path, so off-isolation degrades as
 frequency rises. By 10 MHz, that parasitic coupling, together with crosstalk in the off state,
 was enough to push the channel past spec.
+
+![Off-state feedthrough equivalent circuit](/images/reference-switching-circuit/off-state-feedthrough.svg)
+
+*Off-state model: even "open," the switch presents a small feedthrough capacitance that bridges
+input to output. Its impedance falls as frequency rises, which is why off-isolation degrades.*
 
 ## Qualifying a replacement
 
