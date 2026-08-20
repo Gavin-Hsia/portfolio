@@ -6,7 +6,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   // Production URL — used for canonical links and absolute Open Graph image URLs.
   // Update this if you move to a custom domain (e.g. https://gavinhsia.com).
-  site: 'https://gavinhsia.vercel.app',
+  site: 'https://gavinhsia.com',
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
