@@ -5,6 +5,7 @@ date: 2026-03-01
 context: 'personal'
 tech: ['C', 'ARM Cortex-M4', 'DSP', 'MATLAB']
 featured: false
+onResume: true
 status: 'shipped'
 order: 3
 # repo: 'https://github.com/Gavin-Hsia/...'

@@ -6,6 +6,7 @@ context: 'internship'
 company: 'Hewlett Packard Enterprise'
 tech: ['Cadence Allegro', 'Signal Integrity', 'S-Parameters', 'ITU-T G.703', 'Vector Network Analyzer', 'Crosstalk Analysis']
 featured: true
+onResume: true
 status: 'wip'
 order: 1
 # repo / demo omitted, internal work

@@ -6,6 +6,8 @@ import { getExperience, getWork, workHref, contextLabel } from '@/lib/content';
 
 const experience = await getExperience();
 const work = await getWork();
+// Only projects that appear on the resume PDF (Portfolio still shows them all).
+const resumeProjects = work.filter((w) => w.data.onResume);
 const workBySlug = new Map(
   work.map((w) => [w.id.replace(/\.mdx?$/, ''), w])
 );
@@ -102,7 +104,7 @@ const workBySlug = new Map(
         </div>
         <ol class="timeline">
           {
-            work.map((w) => (
+            resumeProjects.map((w) => (
               <li class="entry reveal">
                 <div class="entry-head">
                   <h3 class="entry-role">

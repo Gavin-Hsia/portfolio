@@ -5,6 +5,7 @@ date: 2025-10-01
 context: 'personal'
 tech: ['Wiring Harness Design', 'Signal Integrity', 'Grounding', 'Power Distribution', 'Connectors']
 featured: true
+onResume: true
 status: 'wip'
 order: 4
 cover: '/images/electrical-system-integration/cover.svg'

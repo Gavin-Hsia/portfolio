@@ -29,6 +29,8 @@ const work = defineCollection({
     tech: z.array(z.string()).default([]),
     /** Show on the home page's featured row. */
     featured: z.boolean().default(false),
+    /** List this project in the Projects section of the Resume page (mirror the resume PDF). */
+    onResume: z.boolean().default(false),
     /** Current state of the work. */
     status: z.enum(['shipped', 'wip', 'archived']).default('shipped'),
     /** Source repo URL (optional). */

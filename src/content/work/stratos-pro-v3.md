@@ -6,6 +6,7 @@ context: 'internship'
 company: 'MOVD'
 tech: ['KiCad', 'ESP32', 'PCB Design', 'Power Regulation', 'Oscilloscope', 'Logic Analyzer']
 featured: true
+onResume: true
 status: 'shipped'
 order: 2
 cover: '/images/stratos-pro-v3/cover.svg'
