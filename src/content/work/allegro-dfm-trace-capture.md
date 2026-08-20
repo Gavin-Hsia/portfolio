@@ -1,6 +1,6 @@
 ---
 title: 'Automated Allegro DFM Trace Capture'
-summary: 'A Python and Cadence SKILL pipeline that finds marginal trace neckdowns in Allegro, isolates the right layer, auto-frames and highlights each one, and drives an external capture script over a handshake protocol to package the screenshots into a ship-ready DFM folder.'
+summary: 'A Python and Cadence SKILL pipeline that finds marginal trace neckdowns in Allegro, isolates the right layer, auto-frames and highlights each one, and drives an external capture script over a handshake protocol to package the screenshots into a ship-ready DFM folder. My team uses it in the back-and-forth with manufacturers and outside partners.'
 date: 2026-05-01
 context: 'internship'
 company: 'Hewlett Packard Enterprise'
@@ -73,11 +73,21 @@ view, no dropped or garbled frames across a long run.
 Each screenshot is then **named and filed into the output folder** so the finished result is a
 single, organized, ship-ready DFM package the manufacturer can open and work through directly.
 
+## In use on the team
+
+The most rewarding part is that this is not a demo sitting in a folder. **My team actually uses it**,
+and the package it produces is what feeds the **back-and-forth with manufacturers and outside
+partners**. When a fab or a partner company raises a question about a tight trace, the consistent,
+clearly framed captures are the shared reference everyone points at, so the conversation is about a
+specific documented neckdown rather than vague descriptions or one-off screenshots. Standardizing
+that output made those exchanges faster and less ambiguous, and it means every board goes into that
+review with the same thorough, repeatable DFM record.
+
 ## Why it mattered
 
 This turned a tedious, error-prone manual chore into a **repeatable pipeline that runs the same way
 every time**. It documents both the violating and the marginal neckdowns consistently, frames and
 highlights each one identically, and packages the whole set without a human clicking through the
 board trace by trace. Building it meant treating the layout as **structured data** I could query,
-and getting Python, SKILL, and an external capture tool to cooperate through a protocol I designed,
-which is the part I am most proud of.
+and getting Python, SKILL, and an external capture tool to cooperate through a protocol I designed.
+Seeing it become part of how the team communicates with manufacturers is what I am most proud of.
