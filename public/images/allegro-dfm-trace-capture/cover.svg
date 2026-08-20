@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="PCB traces measured against manufacturer DFM clearance and width rules">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1626"/><stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+    <linearGradient id="cu" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4da3ff"/><stop offset="100%" stop-color="#8cc4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+
+  <!-- faint routing grid -->
+  <g stroke="#4da3ff" stroke-opacity="0.07" stroke-width="1.5">
+    <path d="M120 140 H1480 M120 280 H1480 M120 420 H1480 M120 560 H1480 M120 700 H1480 M120 840 H1480"/>
+    <path d="M260 120 V860 M420 120 V860 M580 120 V860 M740 120 V860 M900 120 V860 M1060 120 V860 M1220 120 V860 M1380 120 V860"/>
+  </g>
+
+  <!-- copper traces routed across the board -->
+  <g fill="none" stroke="url(#cu)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M160 300 H620 L740 420 H1180 L1300 300 H1460" stroke-width="20"/>
+    <path d="M160 520 H520 L640 640 H1460" stroke-width="20"/>
+    <path d="M160 720 H900 L1020 600 H1460" stroke-width="20"/>
+  </g>
+
+  <!-- pads / vias -->
+  <g fill="#0c1626" stroke="#8cc4ff" stroke-width="6">
+    <circle cx="740" cy="420" r="26"/>
+    <circle cx="640" cy="640" r="26"/>
+    <circle cx="1020" cy="600" r="26"/>
+  </g>
+  <g fill="#4da3ff">
+    <circle cx="740" cy="420" r="9"/>
+    <circle cx="640" cy="640" r="9"/>
+    <circle cx="1020" cy="600" r="9"/>
+  </g>
+
+  <!-- clearance callout between two traces (measured gap) -->
+  <g stroke="#34d399" stroke-width="3">
+    <line x1="430" y1="540" x2="430" y2="700"/>
+    <line x1="410" y1="540" x2="450" y2="540"/>
+    <line x1="410" y1="700" x2="450" y2="700"/>
+  </g>
+  <text x="470" y="628" fill="#34d399" font-family="monospace" font-size="30">clearance</text>
+
+  <!-- trace-width callout -->
+  <g stroke="#f59e0b" stroke-width="3">
+    <line x1="1120" y1="620" x2="1120" y2="660"/>
+    <line x1="1100" y1="620" x2="1140" y2="620"/>
+    <line x1="1100" y1="660" x2="1140" y2="660"/>
+  </g>
+  <text x="1160" y="652" fill="#f59e0b" font-family="monospace" font-size="30">width</text>
+
+  <!-- flagged violation marker -->
+  <circle cx="900" cy="720" r="34" fill="none" stroke="#f87171" stroke-width="6" stroke-dasharray="10 9"/>
+  <text x="900" y="732" fill="#f87171" font-family="monospace" font-size="34" text-anchor="middle">!</text>
+
+  <!-- title strip -->
+  <text x="160" y="200" fill="#c9d2de" font-family="monospace" font-size="34">SKILL &#8594; capture traces &#8594; DFM check</text>
+</svg>
