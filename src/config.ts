@@ -88,7 +88,7 @@ export const site = {
       title: 'Eagle Scout',
       org: 'Boy Scouts of America',
       dates: '2023',
-      logo: '/images/honors/eagle-scout.svg',
+      logo: '/images/honors/eagle-scout.png',
     },
   ],
 } as const;
