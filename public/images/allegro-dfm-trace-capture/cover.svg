@@ -55,5 +55,5 @@
   <text x="900" y="732" fill="#f87171" font-family="monospace" font-size="34" text-anchor="middle">!</text>
 
   <!-- title strip -->
-  <text x="160" y="200" fill="#c9d2de" font-family="monospace" font-size="34">SKILL &#8594; capture traces &#8594; DFM check</text>
+  <text x="160" y="200" fill="#c9d2de" font-family="monospace" font-size="34">Python + SKILL &#8594; isolate &#8594; capture &#8594; package</text>
 </svg>
