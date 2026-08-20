@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import TechTag from '@/components/TechTag.astro';
 import { site } from '@/config';
-import { getExperience, getWork, workHref } from '@/lib/content';
+import { getExperience, getWork, workHref, contextLabel } from '@/lib/content';
 
 const experience = await getExperience();
 const work = await getWork();
@@ -91,6 +91,35 @@ const workBySlug = new Map(
                 </div>
                 <p class="entry-loc">{ed.credential}</p>
                 <p class="entry-summary">{ed.detail}</p>
+              </li>
+            ))
+          }
+        </ol>
+
+        <div class="block reveal edu-head">
+          <p class="eyebrow">Projects</p>
+          <h2 class="display display-md">Projects</h2>
+        </div>
+        <ol class="timeline">
+          {
+            work.map((w) => (
+              <li class="entry reveal">
+                <div class="entry-head">
+                  <h3 class="entry-role">
+                    <a class="proj-link" href={workHref(w)}>
+                      {w.data.title} →
+                    </a>
+                  </h3>
+                  <span class="entry-dates">{contextLabel(w.data)}</span>
+                </div>
+                <p class="entry-summary">{w.data.summary}</p>
+                {w.data.tech.length > 0 && (
+                  <div class="entry-tech">
+                    {w.data.tech.slice(0, 5).map((t) => (
+                      <TechTag label={t} />
+                    ))}
+                  </div>
+                )}
               </li>
             ))
           }

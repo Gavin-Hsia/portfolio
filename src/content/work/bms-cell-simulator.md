@@ -7,7 +7,7 @@ tech: ['KiCad', 'STM32G431', 'Analog Design', 'Embedded C', 'UART', 'Power Elect
 featured: false
 status: 'shipped'
 order: 5
-cover: '/images/bms-cell-simulator/schematic.png'
+cover: '/images/bms-cell-simulator/cover.svg'
 ---
 
 ## Overview

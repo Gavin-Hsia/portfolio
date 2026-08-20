@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="BMS cell simulator concept graphic">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1626"/><stop offset="100%" stop-color="#060a12"/>
+    </linearGradient>
+    <linearGradient id="cellfill" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#134e7a"/><stop offset="100%" stop-color="#1f7fc0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="26%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#1d4b7a" stop-opacity="0.55"/><stop offset="100%" stop-color="#060a12" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .lbl{font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;fill:#cbd5e1;}
+      .acc{font-family:ui-monospace,monospace;fill:#4da3ff;}
+      .mut{font-family:ui-monospace,monospace;fill:#8894a3;}
+      .w{fill:none;stroke:#4da3ff;stroke-width:3;stroke-linecap:round;}
+      .wi{fill:none;stroke:#2f6bb0;stroke-width:2.4;}
+    </style>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#glow)"/>
+  <!-- grid -->
+  <g stroke="#2f6bb0" stroke-opacity="0.08" stroke-width="1.4">
+    <path d="M0 250 H1600 M0 500 H1600 M0 750 H1600"/>
+    <path d="M400 0 V1000 M800 0 V1000 M1200 0 V1000"/>
+  </g>
+
+  <!-- Battery cell (the emulated output) -->
+  <rect x="250" y="300" width="70" height="26" rx="6" fill="#1f7fc0"/>
+  <rect x="205" y="326" width="160" height="380" rx="20" fill="#0c1a2b" stroke="#4da3ff" stroke-width="3"/>
+  <rect x="223" y="470" width="124" height="218" rx="10" fill="url(#cellfill)"/>
+  <text class="acc" x="285" y="404" text-anchor="middle" font-size="40" font-weight="700">+</text>
+  <text class="acc" x="285" y="666" text-anchor="middle" font-size="40" font-weight="700">−</text>
+  <text class="lbl" x="285" y="756" text-anchor="middle" font-size="26">CELL SIMULATOR</text>
+  <text class="acc" x="285" y="792" text-anchor="middle" font-size="30" font-weight="700">2.5 – 4.5 V</text>
+
+  <!-- programmable source feeding the cell (DAC -> op-amp) -->
+  <g>
+    <path class="wi" d="M470 210 h60"/>
+    <polyline class="wi" points="470,240 500,240 500,222 530,222 530,204 560,204" />
+    <text class="mut" x="470" y="196" font-size="22" fill="#8894a3">12-bit DAC</text>
+    <path d="M600 175 L680 210 L600 245 Z" fill="#0c1a2b" stroke="#4da3ff" stroke-width="3"/>
+    <text class="lbl" x="620" y="216" font-size="22">A</text>
+    <path class="w" d="M680 210 H740 V326" marker-end="url(#arrowhead)"/>
+    <text class="mut" x="700" y="150" font-size="22" fill="#8894a3">programmable source</text>
+  </g>
+
+  <!-- output rail with current sense to BMS -->
+  <path class="w" d="M365 516 H620"/>
+  <rect x="620" y="500" width="70" height="32" rx="4" fill="#0c1a2b" stroke="#4da3ff" stroke-width="3"/>
+  <text class="acc" x="655" y="522" text-anchor="middle" font-size="20">0.1Ω</text>
+  <path class="w" d="M690 516 H980" marker-end="url(#arrowhead)"/>
+  <text class="acc" x="800" y="496" text-anchor="middle" font-size="26">I ≤ 200 mA</text>
+  <text class="lbl" x="1000" y="524" font-size="26">to BMS</text>
+
+  <!-- STM32 + isolation barrier -->
+  <rect x="740" y="620" width="150" height="120" rx="10" fill="#0c1a2b" stroke="#4da3ff" stroke-width="3"/>
+  <g fill="#2f6bb0"><rect x="726" y="640" width="14" height="12"/><rect x="726" y="666" width="14" height="12"/><rect x="726" y="692" width="14" height="12"/><rect x="890" y="640" width="14" height="12"/><rect x="890" y="666" width="14" height="12"/><rect x="890" y="692" width="14" height="12"/></g>
+  <text class="lbl" x="815" y="686" text-anchor="middle" font-size="24">STM32G431</text>
+
+  <!-- isolation barrier -->
+  <line x1="1180" y1="120" x2="1180" y2="880" stroke="#f59e0b" stroke-opacity="0.7" stroke-width="3" stroke-dasharray="10 10"/>
+  <text class="lbl" x="1180" y="150" text-anchor="middle" font-size="24" fill="#f59e0b">ISO</text>
+  <path class="w" d="M905 660 H1120" />
+  <path class="w" d="M1120 646 H1240" marker-end="url(#arrowhead)"/>
+  <path class="w" d="M1240 686 H1120" marker-end="url(#arrowhead)"/>
+  <text class="mut" x="1030" y="626" font-size="22" fill="#8894a3">UART</text>
+  <rect x="1240" y="620" width="130" height="90" rx="10" fill="#0c1a2b" stroke="#2f6bb0" stroke-width="2.5"/>
+  <text class="lbl" x="1305" y="672" text-anchor="middle" font-size="24">host / PC</text>
+
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4da3ff"/>
+    </marker>
+  </defs>
+</svg>
