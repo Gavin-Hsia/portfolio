@@ -99,6 +99,32 @@ const workBySlug = new Map(
         </ol>
 
         <div class="block reveal edu-head">
+          <p class="eyebrow">Honors</p>
+          <h2 class="display display-md">Honors</h2>
+        </div>
+        <ol class="timeline">
+          {
+            site.honors.map((h) => (
+              <li class="entry entry--exp reveal">
+                {h.logo && (
+                  <div class="entry-logo">
+                    <img src={h.logo} alt={`${h.org} emblem`} loading="lazy" />
+                  </div>
+                )}
+                <div class="entry-content">
+                  <div class="entry-head">
+                    <h3 class="entry-role">
+                      {h.title} <span class="at">·</span> {h.org}
+                    </h3>
+                    <span class="entry-dates">{h.dates}</span>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+
+        <div class="block reveal edu-head">
           <p class="eyebrow">Projects</p>
           <h2 class="display display-md">Projects</h2>
         </div>

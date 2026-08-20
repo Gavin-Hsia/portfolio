@@ -81,6 +81,16 @@ export const site = {
       dates: 'Expected June 2027',
     },
   ],
+
+  /** Honors / awards for the Resume page. */
+  honors: [
+    {
+      title: 'Eagle Scout',
+      org: 'Boy Scouts of America',
+      dates: '2023',
+      logo: '/images/honors/eagle-scout.svg',
+    },
+  ],
 } as const;
 
 /** Primary nav links. */
