@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="DDR eye diagram with a hexagonal timing/voltage mask">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1626"/><stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#4da3ff" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#4da3ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+
+  <!-- faint grid -->
+  <g stroke="#4da3ff" stroke-opacity="0.07" stroke-width="1.5">
+    <path d="M200 160 H1400 M200 340 H1400 M200 500 H1400 M200 660 H1400 M200 840 H1400"/>
+    <path d="M360 160 V840 M560 160 V840 M760 160 V840 M960 160 V840 M1160 160 V840"/>
+  </g>
+  <!-- axes -->
+  <g stroke="#5b6675" stroke-width="2">
+    <path d="M200 160 V840 M200 500 H1400" fill="none"/>
+  </g>
+  <text x="180" y="180" fill="#8894a3" font-family="monospace" font-size="24" text-anchor="end">V</text>
+  <text x="1395" y="536" fill="#8894a3" font-family="monospace" font-size="24" text-anchor="end">time →</text>
+
+  <!-- eye glow -->
+  <ellipse cx="800" cy="500" rx="260" ry="150" fill="url(#glow)"/>
+
+  <!-- overlaid signal traces forming the eye (multiple lanes) -->
+  <g fill="none" stroke-linecap="round" stroke-opacity="0.85">
+    <path d="M360 300 C 560 300, 620 700, 800 700 S 1040 300, 1240 300" stroke="#4da3ff" stroke-width="4"/>
+    <path d="M360 700 C 560 700, 620 300, 800 300 S 1040 700, 1240 700" stroke="#4da3ff" stroke-width="4"/>
+    <path d="M360 310 C 560 320, 630 690, 800 690 S 1035 315, 1240 312" stroke="#6fb4ff" stroke-width="3" stroke-opacity="0.6"/>
+    <path d="M360 690 C 560 680, 630 310, 800 310 S 1035 685, 1240 688" stroke="#6fb4ff" stroke-width="3" stroke-opacity="0.6"/>
+    <path d="M360 320 C 570 330, 640 680, 800 680 S 1030 325, 1240 322" stroke="#8cc4ff" stroke-width="3" stroke-opacity="0.4"/>
+    <path d="M360 680 C 570 670, 640 320, 800 320 S 1030 675, 1240 678" stroke="#8cc4ff" stroke-width="3" stroke-opacity="0.4"/>
+  </g>
+
+  <!-- JEDEC-style hexagonal mask in the eye opening -->
+  <polygon points="800,410 900,455 900,545 800,590 700,545 700,455"
+           fill="#f59e0b" fill-opacity="0.10" stroke="#f59e0b" stroke-width="3" stroke-dasharray="9 8"/>
+  <text x="800" y="505" fill="#f59e0b" font-family="monospace" font-size="26" text-anchor="middle">mask</text>
+
+  <!-- caption -->
+  <text x="200" y="120" fill="#c9d2de" font-family="monospace" font-size="34">256 captures &#8594; automated &#8594; eye margin</text>
+  <text x="1240" y="900" fill="#8894a3" font-family="monospace" font-size="24" text-anchor="end">dir × channel × lane</text>
+</svg>
